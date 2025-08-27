@@ -1,0 +1,261 @@
+@import "./libs/normalize.scss";
+
+@import "./libs/variables.scss";
+
+html {
+  scroll-behavior: smooth;
+
+  scrollbar-gutter: stable;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+body {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 120%;
+  color: var(--color-light-beige);
+  //	overflow: hidden;
+  margin: 0px;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-blue);
+  min-height: 100dvh;
+}
+
+main {
+  flex-grow: 1;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+a,
+button {
+  cursor: pointer;
+}
+
+/* ========== КАСТОМНЫЕ СТИЛИ СКРОЛЛБАРА ========== */
+
+/* Для Webkit браузеров (Chrome, Safari, Edge) */
+
+/* Основной контейнер скроллбара */
+::-webkit-scrollbar {
+  width: 8px; /* Ширина вертикального скроллбара */
+  height: 8px; /* Высота горизонтального скроллбара */
+}
+
+/* Дорожка скроллбара (фон, по которому двигается ползунок) */
+::-webkit-scrollbar-track {
+  background: var(--color-light-blue); /* Светло-серый полупрозрачный фон */
+  /* Закругленные углы дорожки */
+}
+
+/* Ползунок скроллбара (та часть, которую можно перетаскивать) */
+::-webkit-scrollbar-thumb {
+  background: var(--color-light-blue-2); /* Темно-серый полупрозрачный цвет */
+  border-radius: 10px; /* Закругленные углы ползунка */
+  transition: background var(--transition-normal) ease; /* Плавный переход цвета за 0.3 секунды */
+}
+
+.liquidGlass-effect {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  backdrop-filter: blur(2.5px);
+  filter: url(#glass-distortion);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.liquidGlass-tint {
+  z-index: 1;
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.liquidGlass-wrapper {
+  position: relative;
+  display: flex;
+  font-weight: 600;
+  overflow: hidden;
+
+  cursor: pointer;
+
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 2.2);
+}
+
+.liquidGlass-shine {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  overflow: hidden;
+  box-shadow:
+    inset 2px 2px 1px 0 rgba(255, 255, 255, 0.5),
+    inset -1px -1px 1px 1px rgba(255, 255, 255, 0.5);
+}
+
+// Первая анимация - движение по всей области
+@keyframes ellipse-transform-1 {
+  0% {
+    opacity: 1;
+    transform: translate(5%, 20%) rotate(0deg) scale(0.9);
+  }
+  16.67% {
+    opacity: 0.8;
+    transform: translate(25%, 5%) rotate(60deg) scale(1.2);
+  }
+  33.33% {
+    opacity: 0.7;
+    transform: translate(50%, 15%) rotate(120deg) scale(0.8);
+  }
+  50% {
+    opacity: 0.9;
+    transform: translate(75%, 35%) rotate(180deg) scale(1.3);
+  }
+  66.67% {
+    opacity: 1;
+    transform: translate(90%, 60%) rotate(240deg) scale(0.9);
+  }
+  83.33% {
+    opacity: 0.7;
+    transform: translate(60%, 85%) rotate(300deg) scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(5%, 20%) rotate(360deg) scale(0.9);
+  }
+}
+
+// Вторая анимация - движение по всей области
+@keyframes ellipse-transform-2 {
+  0% {
+    opacity: 1;
+    transform: translate(15%, 10%) rotate(0deg) scale(1);
+  }
+  20% {
+    opacity: 0.7;
+    transform: translate(40%, 5%) rotate(72deg) scale(1.4);
+  }
+  40% {
+    opacity: 0.7;
+    transform: translate(70%, 25%) rotate(144deg) scale(0.7);
+  }
+  60% {
+    opacity: 0.8;
+    transform: translate(85%, 50%) rotate(216deg) scale(1.2);
+  }
+  80% {
+    opacity: 0.7;
+    transform: translate(50%, 80%) rotate(288deg) scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(15%, 10%) rotate(360deg) scale(1);
+  }
+}
+
+// Третья анимация - движение по всей области
+@keyframes ellipse-transform-3 {
+  0% {
+    opacity: 1;
+    transform: translate(10%, 40%) rotate(0deg) scale(1.1);
+  }
+  25% {
+    opacity: 0.8;
+    transform: translate(35%, 15%) rotate(90deg) scale(1.3);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(60%, 45%) rotate(180deg) scale(0.8);
+  }
+  75% {
+    opacity: 0.9;
+    transform: translate(80%, 75%) rotate(270deg) scale(1.4);
+  }
+  100% {
+    opacity: 0.7;
+    transform: translate(10%, 40%) rotate(360deg) scale(1.1);
+  }
+}
+
+.controls-play-button {
+  width: 48px;
+  height: 48px;
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-white);
+  border-radius: 50%;
+  border: none;
+  background-color: rgba(253, 253, 253, 0.16);
+  cursor: pointer;
+  transition: background-color var(--transition-normal) ease;
+  color: var(--color-light);
+  svg {
+    width: 22.5px;
+    height: 22.5px;
+  }
+}
+
+/* Ползунок при наведении курсора */
+::-webkit-scrollbar-thumb:hover {
+  opacity: 0.8;
+}
+
+/* Угол между вертикальным и горизонтальным скроллбарами */
+::-webkit-scrollbar-corner {
+  background: transparent; /* Прозрачный угол */
+}
+
+.head-page {
+  padding-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+// /* Для Firefox */
+// * {
+//   scrollbar-width: thin; /* Тонкий скроллбар */
+//   scrollbar-color: var(--color-light-blue-2) transparent;
+//   /* Первый цвет - ползунок, второй - дорожка */
+// }
+
+@media (max-width: 1200px) {
+  body {
+    --container-padding-x: 36px;
+  }
+}
+
+@media (max-width: 700px) {
+  body {
+    --container-padding-x: 32px;
+  }
+}
+
+@media (max-width: 550px) {
+  body {
+    --container-padding-x: 24px;
+  }
+}
+
+@media (max-width: 450px) {
+  body {
+    --container-padding-x: 16px;
+  }
+}

@@ -1,0 +1,54 @@
+@use "../libs/_mixins.scss" as *;
+
+.container {
+  margin-inline: auto;
+  max-width: calc(
+    (var(--container-max-width) * 1px) + var(--container-padding-x) * 2
+  );
+  padding-inline: var(--container-padding-x);
+  width: 100%;
+}
+
+.name-contest {
+  font-family: var(--second-family);
+  font-weight: 700;
+  font-size: 140px;
+  line-height: 100%;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--color-light-beige);
+}
+
+.text-with-slash {
+  &::before {
+    content: "/";
+    display: inline-block;
+    margin-right: 0.5em;
+    font-size: inherit;
+  }
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  border: 0 !important;
+  padding: 0 !important;
+  white-space: nowrap !important;
+  clip-path: inset(100%) !important;
+  clip: rect(0 0 0 0) !important;
+  overflow: hidden !important;
+}
+
+// .title-h1 {
+//   font-family: var(--font-family);
+//   @include font-setup(
+//     var(--max-font-size-h1),
+//     48,
+//     700,
+//     true,
+//     var(--min-font-size-h1),
+//     var(--max-font-size-h1),
+//     var(--container-max-width)
+//   );

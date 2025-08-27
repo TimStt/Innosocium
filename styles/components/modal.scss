@@ -1,0 +1,198 @@
+@use "../libs/mixins.scss" as *;
+
+.modal {
+  --padding: 40;
+
+  --maxWidth: 380px;
+
+  --paddingMin: 24;
+
+  --radius: 8px;
+  --titleSize: 24;
+
+  --titleLineHeight: 29;
+
+  --titleMinFontSize: 20;
+  --titleMarginBottom: 24px;
+
+  max-width: var(--maxWidth);
+  width: 100%;
+  background-color: var(--color-light);
+  border-radius: var(--radius);
+
+  @include fluid-text(
+    var(--padding),
+    var(--paddingMin),
+    padding,
+    var(--container-max-width)
+  );
+
+  &__close {
+    position: absolute;
+    top: var(--position-close-button);
+    right: var(--position-close-button);
+    width: var(--size-close-button);
+    height: var(--size-close-button);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--color-main);
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  &__title {
+    font-family: var(--font-family);
+    @include font-setup(
+      var(--titleSize),
+      var(--titleLineHeight),
+      700,
+      true,
+      var(--titleMinFontSize),
+      var(--titleSize),
+      var(--container-max-width)
+    );
+    color: var(--color-main);
+    text-align: left;
+    margin-bottom: 24px;
+  }
+}
+
+.popup-overlay {
+  background: #72727254;
+  z-index: var(--z-modal) !important;
+  // z-index: 1000000000;
+}
+
+[data-popup="tooltip"].popup-overlay {
+  background: transparent;
+}
+
+@keyframes anvil {
+  0% {
+    transform: scale(0) translateY(0px);
+    opacity: 0;
+    box-shadow: 0 0 0 rgba(241, 241, 241, 0);
+  }
+
+  1% {
+    transform: scale(0.96) translateY(50px);
+    opacity: 0;
+    box-shadow: 0 0 0 rgba(241, 241, 241, 0);
+  }
+
+  100% {
+    transform: scale(1) translateY(0px);
+    opacity: 1;
+    box-shadow: 0 0 500px rgba(241, 241, 241, 0);
+  }
+}
+
+.popup-content {
+  -webkit-animation: anvil 0.5s cubic-bezier(0.38, 0.1, 0.36, 0.9) forwards;
+}
+
+.modal-toast {
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  &__icon {
+    display: block;
+    margin: auto;
+    margin-bottom: 21px;
+    width: 64px;
+    height: 64px;
+  }
+
+  &__icon-check {
+    stroke-dasharray: 32;
+    stroke-dashoffset: 32;
+    animation: checkmark-draw 0.6s cubic-bezier(0.65, 0, 0.45, 1) 0.2s forwards;
+  }
+
+  @keyframes checkmark-draw {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  &__title {
+    @include font-setup(24, 29, 700);
+    text-align: center;
+  }
+
+  &__progress {
+    position: absolute;
+    top: 0;
+    // left: calc(var(--padding) * -1px);
+    left: 0;
+    width: 100%;
+    border-top-right-radius: var(--radius);
+    border-top-left-radius: var(--radius);
+    max-width: var(--maxWidth);
+    height: 10px;
+    background-color: var(--color-light-gray);
+    overflow: hidden;
+
+    &-bar {
+      transition: width 0.3s ease-in-out;
+      height: 100%;
+      background-color: var(--color-gray);
+    }
+  }
+}
+
+.popup-content:has(.modal-add-response, .modal-auth) {
+  max-width: 380px;
+  width: 100%;
+}
+
+.modal-auth,
+.modal-add-response {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+
+  &__description {
+    font-family: var(--second-family);
+    @include font-setup(16, 19, 400);
+    color: var(--color-main);
+    margin-bottom: 40px;
+    text-align: left;
+  }
+
+  &__button-action + &__button-action {
+    margin-top: 12px;
+  }
+
+  &__inputs {
+    margin-bottom: 24px;
+  }
+
+  textarea {
+    min-height: 111px;
+  }
+}
+
+.police-text {
+  font-family: var(--second-family);
+  @include font-setup(12, 16, 400);
+  color: #727272;
+  text-align: center;
+  margin-top: 8px;
+
+  a {
+    text-decoration: underline;
+  }
+}

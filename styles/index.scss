@@ -1,0 +1,10 @@
+@import "./libs/utils";
+@import "./libs/normalize";
+@import "./globals";
+
+// components ui
+@import "./components/button";
+@import "./components/accordion";
+
+// страницы
+@import "./pages/home/hero-zero";

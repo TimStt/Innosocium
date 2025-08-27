@@ -1,0 +1,430 @@
+@use "../libs/mixins.scss" as *;
+
+// Input wrapper
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  --paddingRightSmall: 12px;
+  --paddingRightMedium: 14.5px;
+  --paddingRightWithPassword: 10px;
+
+  --paddingSmall: 16px var(--paddingRightSmall);
+  --paddingMedium: 16px var(--paddingRightMedium);
+  --paddingLarge: 16px var(--paddingRightMedium);
+
+  &--full-width {
+    width: 100%;
+  }
+
+  &:has(.input--error) {
+    .input-label {
+      color: var(--color-error);
+    }
+  }
+}
+
+// Input label
+.input-label {
+  font-family: var(--third-family);
+  @include font-setup(16, 19, 400);
+  color: #727272;
+  // margin-bottom: 4px;
+}
+
+input:focus-within + .input-placeholder {
+  opacity: 0;
+}
+
+input::placeholder {
+  color: var(--color-gray-2);
+  font-family: var(--third-family);
+  font-family: var(--third-family);
+  @include font-setup(16, 19, 400);
+}
+
+// Input container
+.input-container {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+// Input base styles
+.input {
+  width: 100%;
+  border: 1px solid var(--color-light-gray);
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--color-main);
+  background-color: var(--color-light);
+  transition: all 0.2s ease;
+  outline: none;
+
+  &::placeholder {
+    font-family: var(--third-family);
+    @include font-setup(16, 19, 400);
+  }
+
+  &--with-password {
+    &--small {
+      --paddingRightSmall: calc(
+        var(--paddingRightWithPassword) + var(--paddingRightSmall)
+      );
+    }
+
+    &--large {
+      --paddingRightMedium: calc(
+        var(--paddingRightWithPassword) + var(--paddingRightMedium)
+      );
+    }
+  }
+
+  &:focus-visible {
+    border-color: var(--color-light-blue);
+  }
+
+  &:disabled {
+    background: var(--color-light-gray);
+    color: var(--color-gray-2);
+    cursor: not-allowed;
+  }
+
+  // With icons
+  &--with-left-icon {
+    padding-left: 48px;
+  }
+
+  &--with-right-icon {
+    padding-right: 48px;
+  }
+
+  // Sizes
+  &--small {
+    padding: var(--paddingSmall);
+    font-size: 14px;
+    border-radius: 6px;
+
+    &.input--with-left-icon {
+      padding-left: 36px;
+    }
+
+    .input-placeholder {
+      max-width: calc(100% - var(--paddingSmall));
+    }
+
+    &.input--with-right-icon {
+      padding-right: 36px;
+    }
+  }
+
+  &--medium {
+    padding: var(--paddingMedium);
+  }
+
+  &--large {
+    padding: var(--paddingLarge);
+    font-size: 18px;
+    border-radius: 10px;
+
+    &.input--with-left-icon {
+      padding-left: 56px;
+
+      .input-placeholder {
+        max-width: calc(100% - 56px);
+      }
+    }
+
+    &.input--with-right-icon {
+      padding-right: 56px;
+
+      .input-placeholder {
+        max-width: calc(100% - 56px);
+      }
+    }
+
+    .input-placeholder {
+      max-width: calc(100% - var(--paddingLarge));
+    }
+  }
+
+  // Variants
+  &--primary {
+    border-radius: 48px;
+
+    border-color: #727272;
+
+    &::placeholder {
+      color: var(--color-gray-2);
+    }
+  }
+
+  &--outline {
+    border: 1px solid var(--color-accent-blue);
+
+    &::placeholder {
+      font-family: var(--second-family);
+      @include font-setup(16, 22, 400);
+      color: #727272;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      max-width: max-content;
+    }
+  }
+
+  &--error {
+    border-color: var(--color-error);
+  }
+
+  &--success {
+    border-color: var(--color-success);
+    background: var(--color-background);
+  }
+
+  &--full-width {
+    width: 100%;
+  }
+}
+
+// Input icons
+.input-icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-gray);
+  z-index: 1;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+
+  &--left {
+    left: 12px;
+  }
+
+  &--right {
+    right: 12px;
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+// Input error message
+.input-error {
+  font-size: 12px;
+  color: var(--color-error);
+  line-height: 1;
+  font-weight: 400;
+}
+
+// Password toggle button
+.input-password-toggle {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--color-gray-2);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  pointer-events: auto;
+  transition-duration: var(--transition-normal);
+
+  &:hover {
+    color: var(--color-main);
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(66, 153, 225, 0.1);
+  }
+
+  svg {
+    transition-duration: var(--transition-normal);
+    width: 24px;
+    height: 24px;
+  }
+}
+
+// Size adjustments for password toggle
+.input--small ~ .input-password-toggle {
+  right: 8px;
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.input--large ~ .input-password-toggle {
+  right: 16px;
+
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+// Textarea styles (inherit from input)
+.textarea-wrapper {
+  @extend .input-wrapper;
+}
+
+.textarea-label {
+  @extend .input-label;
+}
+
+.textarea-container {
+  @extend .input-container;
+  position: relative;
+}
+
+.textarea {
+  @extend .input;
+  min-height: 80px;
+  resize: vertical;
+  padding: 12px 16px;
+  line-height: 1.5;
+  font-family: inherit;
+
+  white-space: pre-wrap;
+  word-break: break-word;
+  hyphens: auto;
+
+  // Sizes
+  &--small {
+    min-height: 60px;
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 6px;
+  }
+
+  &--medium {
+    min-height: 80px;
+    padding: 12px 16px;
+    font-size: 16px;
+    border-radius: 8px;
+  }
+
+  &--large {
+    min-height: 100px;
+    padding: 16px 20px;
+    font-size: 18px;
+    border-radius: 10px;
+  }
+
+  // Auto-resize
+  &--auto-resize {
+    resize: none;
+    overflow: hidden;
+  }
+
+  // Variants inherit from input
+  &--primary {
+    @extend .input--primary;
+  }
+
+  &--outline {
+    @extend .input--outline;
+  }
+
+  &--error {
+    @extend .input--error;
+  }
+
+  &--success {
+    @extend .input--success;
+  }
+
+  &--full-width {
+    @extend .input--full-width;
+  }
+}
+
+.textarea-error {
+  @extend .input-error;
+}
+
+// Character counter
+.textarea-counter {
+  position: absolute;
+  bottom: 8px;
+  right: 12px;
+  font-size: 12px;
+  color: var(--color-gray);
+  pointer-events: none;
+  z-index: 1;
+  font-weight: 400;
+  line-height: 1.2;
+
+  &--warning {
+    color: var(--color-warning, #f59e0b);
+  }
+
+  &--error {
+    color: var(--color-error);
+  }
+}
+
+// Counter adjustments for different sizes
+.textarea--small + .textarea-counter {
+  bottom: 6px;
+  right: 8px;
+  font-size: 11px;
+}
+
+.textarea--large + .textarea-counter {
+  bottom: 10px;
+  right: 16px;
+  font-size: 13px;
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .input {
+    font-size: 16px; // Prevent zoom on iOS
+  }
+
+  .input--small {
+    font-size: 14px;
+  }
+
+  .input--large {
+    font-size: 16px;
+  }
+
+  .textarea {
+    font-size: 16px; // Prevent zoom on iOS
+  }
+
+  .textarea--small {
+    font-size: 14px;
+  }
+
+  .textarea--large {
+    font-size: 16px;
+  }
+
+  .textarea-counter {
+    font-size: 11px;
+  }
+}

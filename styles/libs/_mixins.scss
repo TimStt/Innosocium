@@ -1,0 +1,242 @@
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin font-setup(
+  $font-size,
+  $line-height-px,
+  $font-weight: 400,
+  $isFluid: false,
+  $min: 16px,
+  $max: 44px,
+  $container: 1000px
+) {
+  @if $isFluid {
+    @include fluid-text($max, $min, font-size, $container);
+  } @else {
+    font-size: #{$font-size}px;
+  }
+  line-height: calc(#{$line-height-px} / #{$font-size});
+  font-weight: #{$font-weight};
+}
+
+@mixin flex-center-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+}
+@mixin flex-center-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@mixin inline-flex-center {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-gap($gap: 10) {
+  display: flex;
+  gap: #{$gap};
+}
+
+@mixin fluid-text($max: 48px, $min: 16px, $property: font-size, $container) {
+  #{$property}: clamp(
+    calc(#{$min} * 1px),
+    calc(#{$max} / #{$container} * 100vw),
+    calc(#{$max} * 1px)
+  );
+}
+
+@mixin reset-link {
+  color: inherit;
+
+  &,
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+@mixin reset-button {
+  padding: 0;
+  background-color: transparent;
+  border: none;
+}
+
+// styles
+
+@mixin hidden-element {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  border: 0 !important;
+  padding: 0 !important;
+  white-space: nowrap !important;
+  clip-path: inset(100%) !important;
+  clip: rect(0 0 0 0) !important;
+  overflow: hidden !important;
+}
+@mixin square($size) {
+  width: $size;
+  aspect-ratio: 1;
+}
+
+@mixin hover-btn() {
+  &:active {
+    @content;
+  }
+  @media (hover: hover) {
+    @if () {
+      &:hover {
+        @content;
+      }
+    }
+  }
+}
+@mixin px-to-rem($property, $value) {
+  $remValue: $value / 16;
+  $pxValue: ($value);
+  #{$property}: #{$remValue}rem;
+}
+
+@mixin procent-to-px($property, $value, $valuePx) {
+  $result: ($valuePx * $value) / 2;
+
+  #{$property}: #{$result}px;
+}
+
+@mixin position-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+}
+
+@mixin bgGradient($rgb) {
+  background: linear-gradient(
+    180deg,
+    rgba(#{$rgb}, 0) 0%,
+    rgba(#{$rgb}, 0.9) 73%,
+    rgba(#{$rgb}, 1) 100%,
+    rgb(#{$rgb}) 95%
+  );
+}
+
+@mixin autocomplete-input($bg, $color: #fff) {
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: $color;
+    transition: background-color 5000s ease-in-out 0s;
+    box-shadow: inset 0 0 20px 20px $bg;
+  }
+}
+
+/* ===== УНИВЕРСАЛЬНЫЕ КЛАССЫ АНИМАЦИИ ===== */
+
+// Базовые состояния для анимации
+.fade-in,
+.slide-up,
+.slide-down,
+.slide-left,
+.slide-right,
+.scale-in {
+  opacity: 0;
+  transition: all var(--duration, 0.6s) ease;
+  transition-delay: var(--delay, 0s);
+}
+
+// Направления появления
+.slide-up {
+  transform: translateY(var(--distance, 30px));
+}
+
+.slide-down {
+  transform: translateY(var(--distance, -30px));
+}
+
+.slide-left {
+  transform: translateX(var(--distance, -30px));
+}
+
+.slide-right {
+  transform: translateX(var(--distance, 30px));
+}
+
+.scale-in {
+  transform: scale(var(--scale, 0.9));
+}
+
+// Комбинированные эффекты
+.slide-up-fade {
+  opacity: 0;
+  transform: translateY(var(--distance, 30px));
+  transition: all var(--duration, 0.6s) ease;
+  transition-delay: var(--delay, 0s);
+}
+
+.slide-left-fade {
+  opacity: 0;
+  transform: translateX(var(--distance, -30px));
+  transition: all var(--duration, 0.6s) ease;
+  transition-delay: var(--delay, 0s);
+}
+
+.scale-fade {
+  opacity: 0;
+  transform: scale(var(--scale, 0.9));
+  transition: all var(--duration, 0.6s) ease;
+  transition-delay: var(--delay, 0s);
+}
+
+// Активное состояние - добавляй класс .animate для запуска
+.animate {
+  &.fade-in,
+  &.slide-up,
+  &.slide-down,
+  &.slide-left,
+  &.slide-right,
+  &.scale-in,
+  &.slide-up-fade,
+  &.slide-left-fade,
+  &.scale-fade {
+    opacity: 1;
+    transform: translateY(0) translateX(0) scale(1);
+  }
+}
+
+// Миксин для быстрого создания анимации в компонентах
+@mixin animate-on-scroll($animation: 'slide-up', $duration: 0.6s, $delay: 0s) {
+  opacity: 0;
+  transition: all $duration ease;
+  transition-delay: $delay;
+
+  @if $animation == 'slide-up' {
+    transform: translateY(30px);
+  } @else if $animation == 'slide-down' {
+    transform: translateY(-30px);
+  } @else if $animation == 'slide-left' {
+    transform: translateX(-30px);
+  } @else if $animation == 'slide-right' {
+    transform: translateX(30px);
+  } @else if $animation == 'scale' {
+    transform: scale(0.9);
+  } @else if $animation == 'fade' {
+    // только прозрачность
+  }
+
+  &.animate {
+    opacity: 1;
+    transform: translateY(0) translateX(0) scale(1);
+  }
+}

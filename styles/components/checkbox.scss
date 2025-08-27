@@ -1,0 +1,124 @@
+@use '../libs/mixins' as *;
+
+.control {
+  display: flex;
+  position: relative;
+
+  cursor: pointer;
+  font-size: 16px;
+  --gap: 8px;
+  --sizeIndicator: 20px;
+  gap: var(--gap);
+  font-family: var(--second-family);
+  @include font-setup(16, 22, 400);
+  letter-spacing: 0.01em;
+  align-items: center;
+
+  color: var(--color-main);
+}
+
+.control .control__input {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+
+.control__indicator {
+  height: var(--sizeIndicator);
+  /* left: 0; */
+  /* top: 50%; */
+  /* transform: translate(0%, -50%); */
+  min-width: var(--sizeIndicator);
+  border: 1px solid var(--color-accent-blue);
+  position: relative;
+  border-radius: 4px;
+}
+
+.control:hover input ~ .control_indicator,
+.control input:focus ~ .control_indicator {
+  //	background: #ffffff;
+}
+
+.control input:checked ~ .control_indicator {
+  //	background: #ffffff;
+}
+
+.control:hover input:not([disabled]):checked ~ .control_indicator,
+.control input:checked:focus ~ .control_indicator {
+  //	background: #ffffff;
+}
+
+.control:has(.control__input:disabled) .control__indicator {
+  background: var(--color-gray-2);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.control-checkbox .control__indicator:after {
+  box-sizing: unset;
+  content: '';
+  position: absolute;
+  opacity: 0;
+  transition-duration: var(--transition-normal);
+}
+.control-radio .control__indicator {
+  border-radius: 50%;
+}
+
+.control-radio .control__input:checked ~ .control__indicator {
+  background-color: var(--color-accent-blue);
+
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--color-white);
+  }
+}
+
+.control-checkbox:has(input:checked) .control__indicator {
+  &:after {
+    opacity: 1;
+    z-index: 3;
+  }
+
+  background-color: var(--color-accent-blue);
+}
+
+.control-checkbox .control__indicator:after {
+  left: 50%;
+  top: calc(50% - 3px);
+  transform: translate(10px, 10px);
+  width: 6px;
+  height: 10px;
+  border: solid var(--color-white);
+  border-width: 0 2px 2px 0;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.control-checkbox .control__input:disabled ~ .control__indicator:after {
+  border-color: var(--color-gray-1);
+}
+
+.control-checkbox .control__indicator::before {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 4.5rem;
+  height: 4.5rem;
+  margin-left: -1.3rem;
+  margin-top: -1.3rem;
+  background: #2aa1c0;
+  border-radius: 3rem;
+  opacity: 0.6;
+  z-index: 99999;
+  transform: scale(0);
+}

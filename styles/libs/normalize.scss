@@ -1,0 +1,111 @@
+* {
+  box-sizing: border-box;
+}
+
+button {
+  padding: 0;
+  background-color: transparent;
+  border: none;
+}
+
+details > summary::marker {
+  display: none;
+  content: ''; /* Прощай, стрелочка, теперь ты здесь не нужна! */
+}
+
+details > summary::-webkit-details-marker {
+  display: none !important; /* Эй, Chrome, смотри, стрелка исчезла! */
+}
+
+details:not(summary) {
+  list-style: none !important; /* Если нет summary, то и стрелки нет! */
+}
+
+summary {
+  list-style: none !important;
+}
+summary::-webkit-details-marker {
+  display: none !important;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 125%;
+  margin: 0px;
+  margin-bottom: 0px;
+  color: var(--color-black);
+}
+
+input:-webkit-autofill {
+  color: #ffffff !important;
+}
+
+a {
+  color: inherit;
+}
+
+ol,
+ul {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+p {
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin: 0;
+}
+
+img {
+  width: 100%;
+  max-width: 100%;
+  display: block;
+}
+a {
+  text-decoration: none;
+}
+
+hr {
+  border: none;
+  margin: 0px;
+}
+
+textarea {
+  all: unset; /* Убирает все дефолтные стили */
+  resize: none; /* Запрещает изменение размера */
+  box-sizing: border-box;
+
+  /* Для базового оформления можно задать размеры и шрифт */
+  width: 100%; /* Занимает всю ширину родителя */
+  height: auto; /* Высота по содержимому */
+  font-family: inherit; /* Унаследовать шрифт родителя */
+  font-size: inherit; /* Унаследовать размер шрифта родителя */
+  line-height: inherit; /* Унаследовать межстрочный интервал */
+  color: inherit; /* Унаследовать цвет текста */
+  background-color: transparent; /* Прозрачный фон */
+  border: none; /* Убирает рамку */
+  padding: 0; /* Убирает отступы */
+  margin: 0; /* Убирает внешние отступы */
+  outline: none; /* Убирает фокус-рамку */
+}
+
+h1 {
+  display: inline-block;
+  margin-block-end: 0;
+  margin-block-start: 0;
+}
+
+input[type='date']::-webkit-datetime-edit-day-field,
+input[type='date']::-webkit-datetime-edit-month-field,
+input[type='date']::-webkit-datetime-edit-year-field,
+input[type='date']::-webkit-datetime-edit-text {
+  color: var(--color-black);
+  background-color: transparent;
+}

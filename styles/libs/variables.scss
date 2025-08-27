@@ -1,0 +1,59 @@
+// ===== ШРИФТЫ =====
+:root {
+  --container-max-width: 1920;
+  --position-close-button: 12px;
+
+  --container-padding-x: 51px;
+  --container-current-width: calc(
+    var(--container-max-width) + var(--container-padding-x) * 2
+  );
+
+  --max-font-size-h1: 40;
+  --max-font-size-h2: 40;
+
+  --min-font-size-h1: 32;
+  --min-font-size-h2: 26;
+
+  // ===== ЦВЕТА =====
+  // Основные цвета
+  --color-light-beige: #eaeaea;
+
+  --color-rose: #ff2a92;
+
+  --color-blue: #0279c1;
+
+  --color-green: #40ff00;
+
+  --color-light-dark: #383838;
+
+  // Дополнительные цвета для UI
+  --color-error: #e61212;
+  --color-success: #28a745;
+  --color-warning: #ffc107;
+
+  // ===== ОТСТУПЫ И РАЗМЕРЫ =====
+
+  // ===== ПЕРЕХОДЫ =====
+  --transition-fast: 0.15s;
+  --transition-normal: 0.3s;
+  --transition-slow: 0.5s;
+
+  // Специальные переходы
+  --hover-transition: all var(--transition-normal) ease;
+
+  // // ===== РАЗМЕРЫ ЭКРАНОВ =====
+  // --screen-sm: 640px;
+  // --screen-md: 768px;
+  // --screen-lg: 1024px;
+  // --screen-xl: 1280px;
+  // --screen-2xl: 1536px;
+
+  // ===== Z-INDEX =====
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+}

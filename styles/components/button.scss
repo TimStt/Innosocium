@@ -1,0 +1,125 @@
+@use "../libs/mixins.scss" as *;
+:root {
+  // Button sizes
+
+  // Button styling
+  --borderRadius: 10px;
+
+  --primaryBGColor: var(--color-light-beige);
+  --primaryColor: var(--color-light-dark);
+
+  --primaryBGColorHover: var(--color-green);
+  --primaryColorHover: var(--color-light-dark);
+
+  // Button transitions
+  --btnTransition: all var(--transition-normal) ease;
+}
+
+// Базовый стиль кнопки
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  text-align: center;
+
+  text-align: center;
+  text-decoration: none;
+  min-width: max-content;
+  max-width: max-content;
+  border: none;
+  border-radius: var(--btnBorderRadius);
+  cursor: pointer;
+  transition: var(--btnTransition);
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  height: var(--customHeight);
+  padding-inline: 24px;
+
+  span {
+    @include font-setup(16, 16, 600);
+  }
+
+  &:has(.arrow) {
+    // justify-content: space-between;
+    gap: 12px;
+  }
+
+  .arrow {
+    min-width: 24px;
+    max-width: 24px;
+    min-height: 24px;
+    max-height: 24px;
+  }
+
+  // Варианты стилей
+  &--primary {
+    background-color: var(--primaryBGColor);
+    color: var(--primaryColor);
+    border: var(--btnBorderWidth) solid var(--primaryBGColor);
+
+    &:hover {
+      background-color: var(--primaryBGColorHover);
+      color: var(--primaryColorHover);
+    }
+  }
+
+  // Состояния
+  &--disabled,
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+    transform: none !important;
+    box-shadow: none !important;
+  }
+
+  &.loading {
+    cursor: wait;
+
+    @keyframes loading {
+      0% {
+        transform: translateX(25px);
+      }
+      100% {
+        transform: translateX(-20px);
+      }
+    }
+
+    .loader {
+      position: relative;
+      z-index: 2;
+    }
+  }
+
+  // Полная ширина
+  &--full-width {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  // Элементы кнопки
+
+  &__loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    &::after {
+      content: "";
+      width: 16px;
+      height: 16px;
+      border: 2px solid transparent;
+      border-top: 2px solid currentColor;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+  }
+}

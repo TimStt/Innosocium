@@ -1,0 +1,26 @@
+.accordion {
+  width: 100%;
+  user-select: none;
+}
+
+.accordion__summary {
+  cursor: pointer;
+}
+
+.accordion__summary::marker {
+  content: "";
+}
+
+.accordion__content {
+  display: grid;
+  --duration: 0.4s;
+
+  grid-template-rows: 0fr;
+  transition: var(--duration);
+}
+.accordion[open] ~ .accordion__content {
+  grid-template-rows: 1fr;
+}
+.accordion__wrapper {
+  overflow: hidden;
+}
