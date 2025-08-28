@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 
 import "../../styles/index.scss";
 import localFont from "next/font/local";
+import { Header } from "@/widgets/main-blocks/header";
+import Footer from "@/widgets/main-blocks/footer";
 
 // Font files can be colocated inside of `app`
 
@@ -54,7 +56,7 @@ export const displace20 = localFont({
       style: "normal",
     },
   ],
-  variable: "--font-family",
+  variable: "--second-family",
   display: "swap",
 });
 
@@ -77,6 +79,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable} ${displace20.variable} antialiased`}>
+        <Header />
         <main className="wrapper">{children}</main>
         <svg style={{ display: "none" }}>
           <filter
@@ -126,7 +129,7 @@ export default function RootLayout({
               surfaceScale="5"
               specularConstant="1"
               specularExponent="100"
-              lighting-color="white"
+              lightingColor="white"
               result="specLight"
             >
               <fePointLight x="-200" y="-200" z="300"></fePointLight>
@@ -151,6 +154,7 @@ export default function RootLayout({
             ></feDisplacementMap>
           </filter>
         </svg>
+        <Footer />
       </body>
     </html>
   );

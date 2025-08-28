@@ -10,37 +10,26 @@
 import React, { useState } from "react";
 import AccordionItem from "./accordion-item";
 import { nominationsData } from "./data";
+import NominationsIcon from "@/source/icons/nominations.svg";
 
 const Nominations: React.FC = () => {
-  const [openNominations, setOpenNominations] = useState<Set<string>>(
-    new Set(["active-longevity"]) // По умолчанию открыта первая номинация
-  );
-
-  const handleToggle = (nominationId: string) => {
-    const newOpenNominations = new Set(openNominations);
-
-    if (newOpenNominations.has(nominationId)) {
-      newOpenNominations.delete(nominationId);
-    } else {
-      newOpenNominations.add(nominationId);
-    }
-
-    setOpenNominations(newOpenNominations);
-  };
-
   return (
     <section className="nominations">
       <div className="container">
         <div className="nominations__content">
-          <h2 className="nominations__title">Номинации конкурса</h2>
+          <NominationsIcon
+            className="nominations__title"
+            viewBox="0 0 1615 270"
+          />
 
-          <div className="nominations__accordion">
-            {nominationsData.map((nomination) => (
+          <div>
+            {nominationsData.map((nomination, index) => (
               <AccordionItem
                 key={nomination.id}
                 nomination={nomination}
-                isOpen={openNominations.has(nomination.id)}
-                onToggle={handleToggle}
+                index={index}
+                // isOpen={openNominations.has(nomination.id)}
+                // onToggle={handleToggle}
               />
             ))}
           </div>

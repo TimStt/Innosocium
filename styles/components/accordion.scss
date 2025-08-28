@@ -14,9 +14,10 @@
 .accordion__content {
   display: grid;
   --duration: 0.4s;
+  will-change: grid-template-rows;
 
   grid-template-rows: 0fr;
-  transition: var(--duration);
+  transition-duration: var(--duration);
 }
 .accordion[open] ~ .accordion__content {
   grid-template-rows: 1fr;

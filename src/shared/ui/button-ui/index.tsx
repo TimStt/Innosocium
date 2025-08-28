@@ -28,6 +28,7 @@ export const ButtonUI: React.FC<ButtonUIProps> = ({
     <button
       className={cls("button", className, {
         "button--full-width": fullWidth,
+        [variant]: variant,
       })}
       {...props}
     >

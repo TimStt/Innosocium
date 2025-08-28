@@ -10,7 +10,11 @@ button {
 
 details > summary::marker {
   display: none;
-  content: ''; /* Прощай, стрелочка, теперь ты здесь не нужна! */
+  content: ""; /* Прощай, стрелочка, теперь ты здесь не нужна! */
+}
+
+svg {
+  transition-duration: var(--transition-normal);
 }
 
 details > summary::-webkit-details-marker {
@@ -102,10 +106,10 @@ h1 {
   margin-block-start: 0;
 }
 
-input[type='date']::-webkit-datetime-edit-day-field,
-input[type='date']::-webkit-datetime-edit-month-field,
-input[type='date']::-webkit-datetime-edit-year-field,
-input[type='date']::-webkit-datetime-edit-text {
+input[type="date"]::-webkit-datetime-edit-day-field,
+input[type="date"]::-webkit-datetime-edit-month-field,
+input[type="date"]::-webkit-datetime-edit-year-field,
+input[type="date"]::-webkit-datetime-edit-text {
   color: var(--color-black);
   background-color: transparent;
 }

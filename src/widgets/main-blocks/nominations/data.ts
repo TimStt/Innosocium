@@ -7,61 +7,46 @@
 export interface NominationItem {
   id: string;
   title: string;
-  isOpen: boolean;
-  logo?: {
-    src: string;
-    alt: string;
-  };
-  content: Array<{
-    type: "text" | "list" | "image";
+
+  content: {
+    type: "text" | "list";
     title?: string;
-    value: string | string[] | Array<{ src: string; alt: string }>;
-  }>;
+    value: string | string[];
+    images?: [string, string] | [string];
+  }[];
 }
 
 export const nominationsData: NominationItem[] = [
   {
     id: "active-longevity",
-    title: "АКТИВНОЕ ДОЛГОЛЕТИЕ",
-    isOpen: true,
-    logo: {
-      src: "/icons/cd-logo.svg",
-      alt: "CD logo",
-    },
+    title: "Активное долголетие",
+
     content: [
       {
         type: "text",
         value:
-          "ЕСЛИ ТЫ ГОТОВ СДЕЛАТЬ ЖИЗНЬ СТАРШЕГО ПОКОЛЕНИЯ ИНТЕРЕСНОЙ, НАСЫЩЕННОЙ И СФОРМИРОВАТЬ У НИХ АКТИВНУЮ ЖИЗНЕННУЮ ПОЗИЦИЮ, ТО ЭТА НОМИНАЦИЯ ДЛЯ ТЕБЯ!",
+          "Если ты готов сделать жизнь старшего поколения интересной, насыщенной и сформировать у них активную жизненную позицию, то эта номинация для тебя!",
+        images: ["/icons/cd-logo.svg"],
       },
       {
         type: "list",
-        title: "ПРОЕКТ В ЭТОЙ НОМИНАЦИИ МОЖЕТ БЫТЬ НАПРАВЛЕН НА:",
+        title: "Проект в этой номинации может быть направлен на:",
         value: [
           "Повышение качества жизни людей пожилого возраста; содействие дополнительному образованию, социализации и занятости людей пожилого возраста.",
           "Повышение социальной активности людей пожилого возраста, вовлечение их в полноценную жизнь.",
           "Расширение возможностей участия граждан старшего поколения в культурных, образовательных, физкультурных, оздоровительных и других мероприятиях.",
         ],
-      },
-      {
-        type: "image",
-        value: [
-          {
-            src: "/images/active-longevity-chess.jpg",
-            alt: "Двое пожилых мужчин играют в шахматы на улице.",
-          },
-          {
-            src: "/images/active-longevity-group.jpg",
-            alt: "Группа пожилых людей занимается на свежем воздухе.",
-          },
+        images: [
+          "/images/active-longevity-chess.jpg",
+          "/images/active-longevity-group.jpg",
         ],
       },
     ],
   },
   {
     id: "women-leadership",
-    title: "ЖЕНСКОЕ ЛИДЕРСТВО",
-    isOpen: false,
+    title: "Женское лидерство",
+
     content: [
       {
         type: "text",
@@ -81,8 +66,8 @@ export const nominationsData: NominationItem[] = [
   },
   {
     id: "inclusive-society",
-    title: "ИНКЛЮЗИВНОЕ ОБЩЕСТВО",
-    isOpen: false,
+    title: "Инклюзивное общество",
+
     content: [
       {
         type: "text",
@@ -102,8 +87,8 @@ export const nominationsData: NominationItem[] = [
   },
   {
     id: "territory-development",
-    title: "РАЗВИТИЕ ТЕРРИТОРИЙ",
-    isOpen: false,
+    title: "Развитие территорий",
+
     content: [
       {
         type: "text",
@@ -123,8 +108,8 @@ export const nominationsData: NominationItem[] = [
   },
   {
     id: "responsible-animal-care",
-    title: "ОТВЕТСТВЕННОЕ ОТНОШЕНИЕ К ЖИВОТНЫМ",
-    isOpen: false,
+    title: "Ответственное отношение к животным",
+
     content: [
       {
         type: "text",
@@ -144,8 +129,8 @@ export const nominationsData: NominationItem[] = [
   },
   {
     id: "ecology-environmental-protection",
-    title: "ЭКОЛОГИЯ И ОХРАНА ОКРУЖАЮЩЕЙ СРЕДЫ",
-    isOpen: false,
+    title: "Экология и охрана окружающей среды",
+
     content: [
       {
         type: "text",
@@ -165,8 +150,8 @@ export const nominationsData: NominationItem[] = [
   },
   {
     id: "soul-of-russia",
-    title: "ДУША РОССИИ: СОХРАНЕНИЕ КУЛЬТУРЫ И ТРАДИЦИЙ",
-    isOpen: false,
+    title: "Душа России: Сохранение культуры и традиций",
+
     content: [
       {
         type: "text",

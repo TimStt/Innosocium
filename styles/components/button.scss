@@ -3,10 +3,13 @@
   // Button sizes
 
   // Button styling
-  --borderRadius: 10px;
+  --btnBorderRadius: 10px;
 
   --primaryBGColor: var(--color-light-beige);
   --primaryColor: var(--color-light-dark);
+
+  --primaryHeight: 50px;
+  --primaryPadding: 24px;
 
   --primaryBGColorHover: var(--color-green);
   --primaryColorHover: var(--color-light-dark);
@@ -16,7 +19,7 @@
 }
 
 // Базовый стиль кнопки
-.btn {
+.button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -59,10 +62,14 @@
   }
 
   // Варианты стилей
-  &--primary {
+  &.primary {
     background-color: var(--primaryBGColor);
     color: var(--primaryColor);
     border: var(--btnBorderWidth) solid var(--primaryBGColor);
+    border-radius: var(--btnBorderRadius);
+
+    height: var(--primaryHeight);
+    padding-inline: var(--primaryPadding);
 
     &:hover {
       background-color: var(--primaryBGColorHover);

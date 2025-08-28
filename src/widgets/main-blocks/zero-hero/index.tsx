@@ -4,53 +4,64 @@
  * @dependencies: React, ZeroHeroHeader компонент
  * @created: 2025-08-27
  */
+"use client";
 
+import { useFitText } from "@/shared/hooks/use-fit-text";
 import { ButtonUI } from "@/shared/ui/button-ui";
 import { LiquidGlassUI } from "@/shared/ui/liquid-glass-ui";
 import Image from "next/image";
-import React from "react";
+import React, { useRef } from "react";
+import InnosociumLogo from "@/source/icons/innosocium.svg";
 
 export const zeroHeroCards = [
-  "/public/images/student1.jpg",
-  "/public/images/student2.jpg",
-  "/public/images/student3.jpg",
-  "/public/images/student4.jpg",
-  "/public/images/student5.jpg",
+  "/images/student1.jpg",
+  "/images/student2.jpg",
+  "/images/student3.jpg",
+  "/images/student4.jpg",
+  "/images/student5.jpg",
 ];
 
 const ZeroHero: React.FC = () => {
+  const refContainer = useRef<HTMLDivElement>(null);
+  const { refText } = useFitText(refContainer);
+
   return (
-    <section className="zero-hero container">
-      <div className="zero-hero__main">
+    <section className="zero-hero" ref={refContainer}>
+      <div className="zero-hero__main container">
         <div className="zero-hero__main__top">
-          <h1 className="zero-hero__top-description">
+          <h1 className="zero-hero__main__top-description">
             Всероссийский студенческий конкурс социальных проектов
           </h1>
-          <p className="zero-hero__top-description">
+          <p className="zero-hero__main__top-description">
             Заявите о себе и получите шанс реализовать свою идею
           </p>
         </div>
 
-        <span className="zero-hero__name name-contest">Инносоциум</span>
+        <InnosociumLogo className="zero-hero__main__logo name-contest" />
 
-        <p className="zero-hero__description">
+        <p className="zero-hero__main__description">
           Осуществляет поддержку в реализации студенческих проектов,
           направленных на решение социальных проблем и улучшение жизни общества.
         </p>
 
-        <ButtonUI className="zero-hero__cta-button" fullWidth>
+        <ButtonUI className="zero-hero__main__cta-button" fullWidth>
           Подать заявку
         </ButtonUI>
 
-        <div className="zero-hero__right-text">
-          <h2 className="zero-hero__subtitle"></h2>
+        <div className="zero-hero__main__right-text">
+          <h2 className="zero-hero__main__subtitle"></h2>
         </div>
       </div>
 
       <div className="zero-hero__cards">
-        <h2 className="zero-hero__cards-title">
-          Социальный конкурс, где идеи студентов воплощаются в реальные проекты!
-        </h2>
+        <div className="container">
+          <h2 className="zero-hero__cards-title ">
+            <span>Социальный конкурс,</span>
+            <span>где идеи студентов</span>
+            <span>воплощаются</span>
+            <span>в реальные проекты!</span>
+          </h2>
+        </div>
 
         <div className="zero-hero__cards-list">
           {zeroHeroCards.map((card, index) => (

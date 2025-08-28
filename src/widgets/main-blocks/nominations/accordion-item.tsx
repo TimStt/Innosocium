@@ -6,64 +6,79 @@
  */
 
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import { NominationItem } from "./data";
+import { AccordionUI } from "@/shared/ui/accordion-ui";
+import ArrowIcon from "@/source/icons/arrow.svg";
+import { cls } from "@/shared/libs/cls";
 
 interface AccordionItemProps {
   nomination: NominationItem;
-  isOpen: boolean;
-  onToggle: (id: string) => void;
+  index: number;
 }
 
-const AccordionItem: React.FC<AccordionItemProps> = ({
-  nomination,
-  isOpen,
-  onToggle,
-}) => {
+const AccordionItem: React.FC<AccordionItemProps> = ({ nomination, index }) => {
   const renderContent = (content: NominationItem["content"]) => {
     return content.map((item, index) => {
       switch (item.type) {
         case "text":
           return (
-            <p key={index} className="accordion-item__text">
-              {item.value as string}
-            </p>
+            <div key={index} className="nominations__accordion__description">
+              <p>{item.value as string}</p>
+              {item.images && (
+                <div className="nominations__accordion__description-images">
+                  {item.images.map((image, imageIndex) => (
+                    <Image
+                      key={imageIndex}
+                      src={image}
+                      alt={image}
+                      width={100}
+                      height={100}
+                    />
+                  ))}
+                </div>
+              )}
+            </div>
           );
 
         case "list":
           return (
-            <div key={index} className="accordion-item__list">
+            <div key={index} className="nominations__accordion__box">
               {item.title && (
-                <h4 className="accordion-item__list-title">{item.title}</h4>
+                <h4 className="nominations__accordion__box-title">
+                  {item.title}
+                </h4>
               )}
-              <ul className="accordion-item__list-items">
-                {(item.value as string[]).map((listItem, listIndex) => (
-                  <li key={listIndex} className="accordion-item__list-item">
-                    {listItem}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          );
 
-        case "image":
-          return (
-            <div key={index} className="accordion-item__images">
-              {(item.value as Array<{ src: string; alt: string }>).map(
-                (image, imageIndex) => (
-                  <div
-                    key={imageIndex}
-                    className="accordion-item__image-wrapper"
-                  >
+              {item.images && (
+                <div className="nominations__accordion__box-images">
+                  {item.images.map((image, imageIndex) => (
                     <Image
-                      src={image.src}
-                      alt={image.alt}
-                      width={200}
-                      height={200}
-                      className="accordion-item__image"
+                      key={imageIndex}
+                      src={image}
+                      alt={image}
+                      width={420}
+                      height={364}
                     />
-                  </div>
-                )
+                  ))}
+                </div>
+              )}
+
+              {Array.isArray(item.value) ? (
+                <ul className="nominations__accordion__box-list">
+                  {item.value.map((listItem, listIndex) => (
+                    <li
+                      key={listIndex}
+                      className="nominations__accordion__box-item"
+                    >
+                      <p className="text-with-slash">{listItem}</p>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p className="nominations__accordion__box-text text-with-slash">
+                  {item.value}
+                </p>
               )}
             </div>
           );
@@ -74,44 +89,33 @@ const AccordionItem: React.FC<AccordionItemProps> = ({
     });
   };
 
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <div className={`accordion-item ${isOpen ? "accordion-item--open" : ""}`}>
-      <button
-        className="accordion-item__header"
-        onClick={() => onToggle(nomination.id)}
-        aria-expanded={isOpen}
-        aria-controls={`accordion-content-${nomination.id}`}
-      >
-        <div className="accordion-item__title-wrapper">
-          <span className="accordion-item__slash">/</span>
-          <h3 className="accordion-item__title">{nomination.title}</h3>
-        </div>
-        <span className="accordion-item__icon">{isOpen ? "−" : "+"}</span>
-      </button>
-
-      {isOpen && (
-        <div
-          id={`accordion-content-${nomination.id}`}
-          className="accordion-item__content"
-        >
-          {nomination.logo && (
-            <div className="accordion-item__logo">
-              <Image
-                src={nomination.logo.src}
-                alt={nomination.logo.alt}
-                width={40}
-                height={40}
-                className="accordion-item__logo-image"
-              />
-            </div>
-          )}
-
-          <div className="accordion-item__content-wrapper">
-            {renderContent(nomination.content)}
-          </div>
-        </div>
-      )}
-    </div>
+    <AccordionUI
+      classNameRoot={cls("nominations__accordion", {
+        "nominations__accordion--open": isOpen,
+      })}
+      classNameDetails="nominations__accordion-details"
+      classNameWrapper="nominations__accordion-content"
+      classNameSummary="nominations__accordion-summary"
+      titleSummary={nomination.title}
+      propsRoot={{
+        style: {
+          zIndex: index + 1,
+        } as React.CSSProperties,
+      }}
+      summaryContent={
+        <>
+          <span className="text-with-slash">{nomination.title}</span>
+          <ArrowIcon />
+        </>
+      }
+      open={isOpen}
+      onClick={() => setIsOpen(!isOpen)}
+    >
+      {renderContent(nomination.content)}
+    </AccordionUI>
   );
 };
 

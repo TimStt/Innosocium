@@ -1,0 +1,112 @@
+.zero-hero {
+  margin-block: 189px 100px;
+  position: relative;
+  &__main {
+    margin-bottom: 50px;
+    &__top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      &-description {
+        font-weight: 500;
+        font-size: 26px;
+        line-height: 120%;
+        letter-spacing: -0.04em;
+        max-width: 430px;
+        text-transform: uppercase;
+
+        &:first-child {
+          text-align: left;
+        }
+
+        &:last-child {
+          text-align: right;
+        }
+      }
+      margin-bottom: 50px;
+    }
+
+    &__logo {
+      margin-bottom: 20px;
+    }
+
+    &__description {
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 120%;
+      letter-spacing: -0.02em;
+      text-align: center;
+      margin-bottom: 50px;
+    }
+  }
+
+  &__cards {
+    &-title {
+      --fontSizeMax: 93;
+      --fontSizeMin: 43;
+      font-family: var(--second-family);
+      font-weight: 500;
+      @include fluid-text(
+        var(--fontSizeMax),
+        var(--fontSizeMin),
+        font-size,
+        var(--container-max-width)
+      );
+
+      line-height: 100%;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      display: inline-flex;
+      flex-direction: column;
+      width: 100%;
+
+      span {
+        text-wrap: nowrap;
+
+        &:first-child {
+          text-align: left;
+        }
+
+        &:nth-child(2) {
+          text-indent: 40%;
+        }
+
+        &:nth-child(3) {
+          text-indent: 20%;
+        }
+
+        &:last-child {
+          text-indent: 40%;
+        }
+      }
+    }
+
+    &-list {
+      margin-top: -2%;
+      display: flex;
+      gap: 120px;
+      overflow: hidden;
+      margin-inline: auto;
+      width: max-content;
+      align-items: center;
+    }
+
+    &-item {
+      padding: 10px;
+      border-radius: 5px;
+      img {
+        z-index: 10;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+
+        overflow: hidden;
+      }
+
+      // каждый 2й элемент
+      &:nth-child(2n) {
+        margin-bottom: 10%;
+      }
+    }
+  }
+}

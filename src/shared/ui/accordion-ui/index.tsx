@@ -15,6 +15,8 @@ export interface IAccordion extends DetailsHTMLAttributes<HTMLDetailsElement> {
   rootOnClick?: () => void;
   rootMouseEnter?: () => void;
   rootMouseLeave?: () => void;
+  classNameWrapper?: string;
+  propsRoot?: React.HTMLAttributes<HTMLDivElement>;
 }
 export const AccordionUI = ({
   classNameRoot,
@@ -31,6 +33,8 @@ export const AccordionUI = ({
   rootMouseEnter,
   rootMouseLeave,
   rootOnClick,
+  classNameWrapper,
+  propsRoot,
   ...props
 }: IAccordion) => {
   const id = useId();
@@ -45,6 +49,7 @@ export const AccordionUI = ({
       onMouseEnter={rootMouseEnter}
       onMouseLeave={rootMouseLeave}
       ref={rootRef}
+      {...propsRoot}
     >
       <details
         className={cls("accordion", classNameDetails)}
@@ -70,7 +75,9 @@ export const AccordionUI = ({
         id={id}
         role="definition"
       >
-        <div className="accordion__wrapper">{children}</div>
+        <div className={cls("accordion__wrapper", classNameWrapper)}>
+          {children}
+        </div>
       </div>
     </div>
   );

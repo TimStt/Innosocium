@@ -28,12 +28,118 @@ body {
   margin: 0px;
   display: flex;
   flex-direction: column;
-  background: var(--color-blue);
+
+  background: 
+        /* Полоса 1 - x: 0, width: 102.946px */
+    linear-gradient(180deg, var(--color-blue) 0%, var(--color-rose) 38.94%) 0%
+      0% / 5.36% 100% no-repeat,
+    /* Полоса 2 - x: 100.949, width: 86.9547px */
+      linear-gradient(180deg, var(--color-blue) 0%, var(--color-rose) 45.79%)
+      5.26% 0% / 4.53% 100% no-repeat,
+    /* Полоса 3 - x: 186.902, width: 86.9547px */
+      linear-gradient(180deg, var(--color-blue) 0%, var(--color-rose) 50.27%)
+      9.74% 0% / 4.53% 100% no-repeat,
+    /* Полоса 4 - x: 272.859, width: 85.9552px */
+      linear-gradient(180deg, var(--color-blue) 0%, var(--color-rose) 54.12%)
+      14.22% 0% / 4.48% 100% no-repeat,
+    /* Полоса 5 - x: 357.816, width: 86.9547px */
+      linear-gradient(180deg, var(--color-blue) 0%, var(--color-rose) 54.34%)
+      18.65% 0% / 4.53% 100% no-repeat,
+    /* Полоса 6 - x: 443.77, width: 86.9547px */
+      linear-gradient(180deg, var(--color-blue) 0%, var(--color-rose) 63.46%)
+      23.13% 0% / 4.53% 100% no-repeat,
+    /* Полоса 7 - x: 529.727, width: 86.9547px */
+      linear-gradient(180deg, var(--color-blue) 0%, var(--color-rose) 72.12%)
+      27.61% 0% / 4.53% 100% no-repeat,
+    /* Полоса 8 - x: 615.68, width: 86.9547px */
+      linear-gradient(180deg, var(--color-blue) 0%, var(--color-rose) 79.31%)
+      32.08% 0% / 4.53% 100% no-repeat,
+    /* Полоса 9 - x: 701.637, width: 85.9552px */
+      linear-gradient(180deg, var(--color-blue) 0%, var(--color-rose) 84.76%)
+      36.56% 0% / 4.48% 100% no-repeat,
+    /* Полоса 10 - x: 786.594, width: 86.9547px */
+      linear-gradient(180deg, var(--color-blue) 0%, var(--color-rose) 92.21%)
+      41% 0% / 4.53% 100% no-repeat,
+    /* Полоса 11 - x: 872.547, width: 86.9547px */
+      linear-gradient(180deg, var(--color-blue) 0%, var(--color-rose) 96.5%)
+      45.48% 0% / 4.53% 100% no-repeat,
+    /* Полоса 12 - x: 958.504, width: 86.9547px */
+      linear-gradient(180deg, var(--color-blue) 0%, var(--color-rose) 96.5%)
+      49.95% 0% / 4.53% 100% no-repeat,
+    /* Полоса 13 - x: 1044.46, width: 86.9547px */
+      linear-gradient(180deg, var(--color-blue) 0%, var(--color-rose) 92.21%)
+      54.43% 0% / 4.53% 100% no-repeat,
+    /* Полоса 14 - x: 1130.41, width: 85.9552px */
+      linear-gradient(180deg, var(--color-blue) 0%, var(--color-rose) 84.76%)
+      58.91% 0% / 4.48% 100% no-repeat,
+    /* Полоса 15 - x: 1215.37, width: 86.9547px */
+      linear-gradient(180deg, var(--color-blue) 0%, var(--color-rose) 79.31%)
+      63.34% 0% / 4.53% 100% no-repeat,
+    /* Полоса 16 - x: 1301.32, width: 86.9547px */
+      linear-gradient(180deg, var(--color-blue) 0%, var(--color-rose) 72.12%)
+      67.82% 0% / 4.53% 100% no-repeat,
+    /* Полоса 17 - x: 1387.28, width: 86.9547px */
+      linear-gradient(180deg, var(--color-blue) 0%, var(--color-rose) 63.46%)
+      72.3% 0% / 4.53% 100% no-repeat,
+    /* Полоса 18 - x: 1473.23, width: 86.9547px */
+      linear-gradient(180deg, var(--color-blue) 0%, var(--color-rose) 58.65%)
+      76.77% 0% / 4.53% 100% no-repeat,
+    /* Полоса 19 - x: 1559.19, width: 85.9552px - зеркальная полоса 7 */
+      linear-gradient(180deg, var(--color-blue) 0%, var(--color-rose) 54.12%)
+      81.25% 0% / 4.48% 100% no-repeat,
+    /* Полоса 20 - x: 1644.14, width: 86.9547px - зеркальная полоса 5 */
+      linear-gradient(180deg, var(--color-blue) 0%, var(--color-rose) 50.27%)
+      85.73% 0% / 4.53% 100% no-repeat,
+    /* Полоса 21 - x: 1730.1, width: 86.9547px - зеркальная полоса 4 */
+      linear-gradient(180deg, var(--color-blue) 0%, var(--color-rose) 45.79%)
+      90.21% 0% / 4.53% 100% no-repeat,
+    /* Полоса 22 - x: 1816.05, width: 102.946px - зеркальная полоса 1 */
+      linear-gradient(180deg, var(--color-blue) 0%, var(--color-rose) 38.94%)
+      94.64% 0% / 5.36% 100% no-repeat,
+    /* Базовый фон */
+      linear-gradient(180deg, var(--color-blue) 0%, var(--color-rose) 50%);
+
+  background-repeat: no-repeat;
+  background-size: cover;
+
   min-height: 100dvh;
 }
 
 main {
   flex-grow: 1;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  span {
+    font-family: var(--second-family);
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1;
+    text-transform: uppercase;
+    color: var(--color-light-beige);
+  }
+
+  // 3D-анимация «планеты»: шар вращается по оси X, орбиты делают 2 оборота за цикл
+  position: relative;
+  perspective: 800px;
+  transform-style: preserve-3d;
+
+  img {
+    max-width: 41px;
+
+    @keyframes planet-rotate-x {
+      from {
+        transform: rotateX(0deg);
+      }
+      to {
+        transform: rotateX(360deg);
+      }
+    }
+  }
 }
 
 button:disabled {
@@ -108,108 +214,8 @@ button {
 }
 
 // Первая анимация - движение по всей области
-@keyframes ellipse-transform-1 {
-  0% {
-    opacity: 1;
-    transform: translate(5%, 20%) rotate(0deg) scale(0.9);
-  }
-  16.67% {
-    opacity: 0.8;
-    transform: translate(25%, 5%) rotate(60deg) scale(1.2);
-  }
-  33.33% {
-    opacity: 0.7;
-    transform: translate(50%, 15%) rotate(120deg) scale(0.8);
-  }
-  50% {
-    opacity: 0.9;
-    transform: translate(75%, 35%) rotate(180deg) scale(1.3);
-  }
-  66.67% {
-    opacity: 1;
-    transform: translate(90%, 60%) rotate(240deg) scale(0.9);
-  }
-  83.33% {
-    opacity: 0.7;
-    transform: translate(60%, 85%) rotate(300deg) scale(1.1);
-  }
-  100% {
-    opacity: 1;
-    transform: translate(5%, 20%) rotate(360deg) scale(0.9);
-  }
-}
-
-// Вторая анимация - движение по всей области
-@keyframes ellipse-transform-2 {
-  0% {
-    opacity: 1;
-    transform: translate(15%, 10%) rotate(0deg) scale(1);
-  }
-  20% {
-    opacity: 0.7;
-    transform: translate(40%, 5%) rotate(72deg) scale(1.4);
-  }
-  40% {
-    opacity: 0.7;
-    transform: translate(70%, 25%) rotate(144deg) scale(0.7);
-  }
-  60% {
-    opacity: 0.8;
-    transform: translate(85%, 50%) rotate(216deg) scale(1.2);
-  }
-  80% {
-    opacity: 0.7;
-    transform: translate(50%, 80%) rotate(288deg) scale(0.8);
-  }
-  100% {
-    opacity: 1;
-    transform: translate(15%, 10%) rotate(360deg) scale(1);
-  }
-}
 
 // Третья анимация - движение по всей области
-@keyframes ellipse-transform-3 {
-  0% {
-    opacity: 1;
-    transform: translate(10%, 40%) rotate(0deg) scale(1.1);
-  }
-  25% {
-    opacity: 0.8;
-    transform: translate(35%, 15%) rotate(90deg) scale(1.3);
-  }
-  50% {
-    opacity: 1;
-    transform: translate(60%, 45%) rotate(180deg) scale(0.8);
-  }
-  75% {
-    opacity: 0.9;
-    transform: translate(80%, 75%) rotate(270deg) scale(1.4);
-  }
-  100% {
-    opacity: 0.7;
-    transform: translate(10%, 40%) rotate(360deg) scale(1.1);
-  }
-}
-
-.controls-play-button {
-  width: 48px;
-  height: 48px;
-  backdrop-filter: blur(8px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--color-white);
-  border-radius: 50%;
-  border: none;
-  background-color: rgba(253, 253, 253, 0.16);
-  cursor: pointer;
-  transition: background-color var(--transition-normal) ease;
-  color: var(--color-light);
-  svg {
-    width: 22.5px;
-    height: 22.5px;
-  }
-}
 
 /* Ползунок при наведении курсора */
 ::-webkit-scrollbar-thumb:hover {
@@ -236,26 +242,26 @@ button {
 //   /* Первый цвет - ползунок, второй - дорожка */
 // }
 
-@media (max-width: 1200px) {
+@media (min-width: 940px) and (max-width: 1199px) {
   body {
-    --container-padding-x: 36px;
+    --container-padding-x: 30px;
   }
 }
 
-@media (max-width: 700px) {
+@media (min-width: 768px) and (max-width: 939px) {
   body {
-    --container-padding-x: 32px;
+    --container-padding-x: 21px;
   }
 }
 
-@media (max-width: 550px) {
+@media (min-width: 650px) and (max-width: 767px) {
   body {
-    --container-padding-x: 24px;
+    --container-padding-x: 25px;
   }
 }
 
-@media (max-width: 450px) {
+@media (min-width: 320px) and (max-width: 649px) {
   body {
-    --container-padding-x: 16px;
+    --container-padding-x: 10px;
   }
 }
