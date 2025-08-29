@@ -29,84 +29,25 @@ body {
   display: flex;
   flex-direction: column;
 
-  background: 
-        /* Полоса 1 - x: 0, width: 102.946px */
-    linear-gradient(180deg, var(--color-blue) 0%, var(--color-rose) 38.94%) 0%
-      0% / 5.36% 100% no-repeat,
-    /* Полоса 2 - x: 100.949, width: 86.9547px */
-      linear-gradient(180deg, var(--color-blue) 0%, var(--color-rose) 45.79%)
-      5.26% 0% / 4.53% 100% no-repeat,
-    /* Полоса 3 - x: 186.902, width: 86.9547px */
-      linear-gradient(180deg, var(--color-blue) 0%, var(--color-rose) 50.27%)
-      9.74% 0% / 4.53% 100% no-repeat,
-    /* Полоса 4 - x: 272.859, width: 85.9552px */
-      linear-gradient(180deg, var(--color-blue) 0%, var(--color-rose) 54.12%)
-      14.22% 0% / 4.48% 100% no-repeat,
-    /* Полоса 5 - x: 357.816, width: 86.9547px */
-      linear-gradient(180deg, var(--color-blue) 0%, var(--color-rose) 54.34%)
-      18.65% 0% / 4.53% 100% no-repeat,
-    /* Полоса 6 - x: 443.77, width: 86.9547px */
-      linear-gradient(180deg, var(--color-blue) 0%, var(--color-rose) 63.46%)
-      23.13% 0% / 4.53% 100% no-repeat,
-    /* Полоса 7 - x: 529.727, width: 86.9547px */
-      linear-gradient(180deg, var(--color-blue) 0%, var(--color-rose) 72.12%)
-      27.61% 0% / 4.53% 100% no-repeat,
-    /* Полоса 8 - x: 615.68, width: 86.9547px */
-      linear-gradient(180deg, var(--color-blue) 0%, var(--color-rose) 79.31%)
-      32.08% 0% / 4.53% 100% no-repeat,
-    /* Полоса 9 - x: 701.637, width: 85.9552px */
-      linear-gradient(180deg, var(--color-blue) 0%, var(--color-rose) 84.76%)
-      36.56% 0% / 4.48% 100% no-repeat,
-    /* Полоса 10 - x: 786.594, width: 86.9547px */
-      linear-gradient(180deg, var(--color-blue) 0%, var(--color-rose) 92.21%)
-      41% 0% / 4.53% 100% no-repeat,
-    /* Полоса 11 - x: 872.547, width: 86.9547px */
-      linear-gradient(180deg, var(--color-blue) 0%, var(--color-rose) 96.5%)
-      45.48% 0% / 4.53% 100% no-repeat,
-    /* Полоса 12 - x: 958.504, width: 86.9547px */
-      linear-gradient(180deg, var(--color-blue) 0%, var(--color-rose) 96.5%)
-      49.95% 0% / 4.53% 100% no-repeat,
-    /* Полоса 13 - x: 1044.46, width: 86.9547px */
-      linear-gradient(180deg, var(--color-blue) 0%, var(--color-rose) 92.21%)
-      54.43% 0% / 4.53% 100% no-repeat,
-    /* Полоса 14 - x: 1130.41, width: 85.9552px */
-      linear-gradient(180deg, var(--color-blue) 0%, var(--color-rose) 84.76%)
-      58.91% 0% / 4.48% 100% no-repeat,
-    /* Полоса 15 - x: 1215.37, width: 86.9547px */
-      linear-gradient(180deg, var(--color-blue) 0%, var(--color-rose) 79.31%)
-      63.34% 0% / 4.53% 100% no-repeat,
-    /* Полоса 16 - x: 1301.32, width: 86.9547px */
-      linear-gradient(180deg, var(--color-blue) 0%, var(--color-rose) 72.12%)
-      67.82% 0% / 4.53% 100% no-repeat,
-    /* Полоса 17 - x: 1387.28, width: 86.9547px */
-      linear-gradient(180deg, var(--color-blue) 0%, var(--color-rose) 63.46%)
-      72.3% 0% / 4.53% 100% no-repeat,
-    /* Полоса 18 - x: 1473.23, width: 86.9547px */
-      linear-gradient(180deg, var(--color-blue) 0%, var(--color-rose) 58.65%)
-      76.77% 0% / 4.53% 100% no-repeat,
-    /* Полоса 19 - x: 1559.19, width: 85.9552px - зеркальная полоса 7 */
-      linear-gradient(180deg, var(--color-blue) 0%, var(--color-rose) 54.12%)
-      81.25% 0% / 4.48% 100% no-repeat,
-    /* Полоса 20 - x: 1644.14, width: 86.9547px - зеркальная полоса 5 */
-      linear-gradient(180deg, var(--color-blue) 0%, var(--color-rose) 50.27%)
-      85.73% 0% / 4.53% 100% no-repeat,
-    /* Полоса 21 - x: 1730.1, width: 86.9547px - зеркальная полоса 4 */
-      linear-gradient(180deg, var(--color-blue) 0%, var(--color-rose) 45.79%)
-      90.21% 0% / 4.53% 100% no-repeat,
-    /* Полоса 22 - x: 1816.05, width: 102.946px - зеркальная полоса 1 */
-      linear-gradient(180deg, var(--color-blue) 0%, var(--color-rose) 38.94%)
-      94.64% 0% / 5.36% 100% no-repeat,
-    /* Базовый фон */
-      linear-gradient(180deg, var(--color-blue) 0%, var(--color-rose) 50%);
-
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-color: var(--color-blue);
 
   min-height: 100dvh;
 }
 
 main {
   flex-grow: 1;
+}
+
+.badge {
+  display: inline-block;
+  border-radius: 10px;
+  padding: 2.5px 10px;
+  background-color: var(--color-green);
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: -0.03em;
+  color: var(--color-light-dark);
+  width: fit-content;
 }
 
 .logo {

@@ -1,8 +1,11 @@
 .zero-hero {
-  margin-block: 189px 100px;
+  margin-bottom: 100px;
+
   position: relative;
   &__main {
-    margin-bottom: 50px;
+    padding-block: 189px 50px;
+
+    position: relative;
     &__top {
       display: flex;
       justify-content: space-between;
@@ -31,6 +34,8 @@
     }
 
     &__description {
+      max-width: 590px;
+      margin-inline: auto;
       font-weight: 400;
       font-size: 16px;
       line-height: 120%;
@@ -41,6 +46,7 @@
   }
 
   &__cards {
+    position: relative;
     &-title {
       --fontSizeMax: 93;
       --fontSizeMin: 43;

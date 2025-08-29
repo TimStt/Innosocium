@@ -130,3 +130,30 @@
     }
   }
 }
+
+.link-with-underline {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 2px;
+  text-decoration-color: var(--color-green);
+  transition: var(--transition-normal);
+  text-wrap: nowrap;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 120%;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+
+  &:focus-within,
+  &:active {
+    text-decoration-color: var(--color-light-beige);
+  }
+
+  @media (hover: hover) {
+    @if () {
+      &:hover {
+        color: var(--color-green);
+      }
+    }
+  }
+}

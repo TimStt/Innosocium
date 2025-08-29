@@ -27,6 +27,7 @@
   --color-green: #40ff00;
 
   --color-light-dark: #383838;
+  --color-black: #000000;
 
   // Дополнительные цвета для UI
   --color-error: #e61212;
@@ -39,6 +40,9 @@
   --transition-fast: 0.15s;
   --transition-normal: 0.3s;
   --transition-slow: 0.5s;
+  --transition-slower: 1s;
+  --transition-slower-2: 2s;
+  --transition-slower-3: 3s;
 
   // Специальные переходы
   --hover-transition: all var(--transition-normal) ease;
@@ -58,4 +62,5 @@
   --z-modal: 1050;
   --z-popover: 1060;
   --z-tooltip: 1070;
+  --z-background: -1;
 }

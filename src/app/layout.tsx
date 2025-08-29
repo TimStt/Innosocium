@@ -81,6 +81,7 @@ export default function RootLayout({
       <body className={`${inter.variable} ${displace20.variable} antialiased`}>
         <Header />
         <main className="wrapper">{children}</main>
+
         <svg style={{ display: "none" }}>
           <filter
             id="glass-distortion"

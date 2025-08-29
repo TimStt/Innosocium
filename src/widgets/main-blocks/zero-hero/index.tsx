@@ -12,6 +12,7 @@ import { LiquidGlassUI } from "@/shared/ui/liquid-glass-ui";
 import Image from "next/image";
 import React, { useRef } from "react";
 import InnosociumLogo from "@/source/icons/innosocium.svg";
+import { WaveAnimationUI } from "@/shared/ui/wave-animation-ui";
 
 export const zeroHeroCards = [
   "/images/student1.jpg",
@@ -22,38 +23,40 @@ export const zeroHeroCards = [
 ];
 
 const ZeroHero: React.FC = () => {
-  const refContainer = useRef<HTMLDivElement>(null);
-  const { refText } = useFitText(refContainer);
-
   return (
-    <section className="zero-hero" ref={refContainer}>
-      <div className="zero-hero__main container">
-        <div className="zero-hero__main__top">
-          <h1 className="zero-hero__main__top-description">
-            Всероссийский студенческий конкурс социальных проектов
-          </h1>
-          <p className="zero-hero__main__top-description">
-            Заявите о себе и получите шанс реализовать свою идею
+    <section className="zero-hero">
+      <div className="zero-hero__main ">
+        <div className="container">
+          <div className="zero-hero__main__top ">
+            <h1 className="zero-hero__main__top-description">
+              Всероссийский студенческий конкурс социальных проектов
+            </h1>
+            <p className="zero-hero__main__top-description">
+              Заявите о себе и получите шанс реализовать свою идею
+            </p>
+          </div>
+
+          <InnosociumLogo className="zero-hero__main__logo name-contest" />
+
+          <p className="zero-hero__main__description">
+            Осуществляет поддержку в реализации студенческих проектов,
+            направленных на решение социальных проблем и улучшение жизни
+            общества.
           </p>
+
+          <ButtonUI className="zero-hero__main__cta-button" fullWidth>
+            Подать заявку
+          </ButtonUI>
+
+          <div className="zero-hero__main__right-text">
+            <h2 className="zero-hero__main__subtitle"></h2>
+          </div>
         </div>
-
-        <InnosociumLogo className="zero-hero__main__logo name-contest" />
-
-        <p className="zero-hero__main__description">
-          Осуществляет поддержку в реализации студенческих проектов,
-          направленных на решение социальных проблем и улучшение жизни общества.
-        </p>
-
-        <ButtonUI className="zero-hero__main__cta-button" fullWidth>
-          Подать заявку
-        </ButtonUI>
-
-        <div className="zero-hero__main__right-text">
-          <h2 className="zero-hero__main__subtitle"></h2>
-        </div>
+        <WaveAnimationUI />
       </div>
 
       <div className="zero-hero__cards">
+        {/* <WaveAnimationUI noAnimation reversed /> */}
         <div className="container">
           <h2 className="zero-hero__cards-title ">
             <span>Социальный конкурс,</span>

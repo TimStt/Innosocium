@@ -1,10 +1,17 @@
 .nominations {
   --titlePadding: 110px;
+  position: relative;
+
+  padding-bottom: 150px;
   &__title {
     display: block;
     width: calc(100% - (var(--titlePadding) * 2));
     height: 100%;
     margin-inline: auto;
+    margin-bottom: 100px;
+  }
+
+  &__accordions {
     margin-bottom: 100px;
   }
 
@@ -39,11 +46,11 @@
       }
 
       .nominations__accordion__description {
-        margin-top: var(--heightOpenSummary);
+        transform: translate(0, var(--heightOpenSummary));
       }
 
-      .nominations__accordion-content {
-        margin-top: calc(var(--heightOpenSummary) * -1);
+      .accordion__content {
+        transform: translate(0, calc(var(--heightOpenSummary) * -1));
       }
     }
 
@@ -78,6 +85,7 @@
       svg {
         width: 40px;
         height: 40px;
+        z-index: 4;
       }
     }
 
@@ -114,6 +122,11 @@
       }
     }
 
+    &-details {
+      position: relative;
+      z-index: 4;
+    }
+
     &__box {
       padding: 20px 60px 20px 20px;
       flex: 1;
@@ -145,7 +158,8 @@
           aspect-ratio: 400 / 235;
           height: auto;
           max-width: 400px;
-          object-fit: contain;
+          max-height: 235px;
+          object-fit: cover;
         }
       }
 
@@ -155,7 +169,7 @@
         gap: 50px;
       }
 
-      &-item,
+      &-item p,
       &-description {
         font-weight: 600;
         font-size: 40px;
@@ -164,6 +178,7 @@
 
         &::before {
           color: var(--color-green);
+          margin-right: 0.2em;
         }
       }
     }

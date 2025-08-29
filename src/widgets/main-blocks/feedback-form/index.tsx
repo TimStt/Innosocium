@@ -4,7 +4,7 @@
  * @dependencies: React, ButtonUI
  * @created: 2025-01-27
  */
-
+"use client";
 import { ButtonUI } from "@/shared/ui/button-ui";
 import React, { useState } from "react";
 
