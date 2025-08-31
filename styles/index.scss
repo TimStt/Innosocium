@@ -1,18 +1,21 @@
-@import "./libs/utils";
-@import "./libs/normalize";
-@import "./globals";
+@import './libs/utils';
+@import './libs/normalize';
+@import './globals';
 
 // components ui
-@import "./components/button";
-@import "./components/accordion";
-@import "./components/animations";
-@import "./components/header";
-@import "./components/feedback-form";
+@import './components/button';
+@import './components/accordion';
+@import './components/animations';
+@import './components/header';
+@import './components/feedback-form';
+@import './components/input';
+@import './components/checkbox';
+@import './components/footer';
 
 // страницы
-@import "./pages/home/hero-zero";
-@import "./pages/home/nominations";
-@import "./pages/home/grant";
-@import "./pages/home/stages-of-the-competition";
-@import "./pages/home/partners";
-@import "./pages/home/experts";
+@import './pages/home/hero-zero';
+@import './pages/home/nominations';
+@import './pages/home/grant';
+@import './pages/home/stages-of-the-competition';
+@import './pages/home/partners';
+@import './pages/home/experts';

@@ -1,9 +1,10 @@
-import type { Metadata } from "next";
+import FeedbackForm from '@/widgets/main-blocks/feedback-form'
+import Footer from '@/widgets/main-blocks/footer'
+import { Header } from '@/widgets/main-blocks/header'
+import type { Metadata } from 'next'
+import localFont from 'next/font/local'
 
-import "../../styles/index.scss";
-import localFont from "next/font/local";
-import { Header } from "@/widgets/main-blocks/header";
-import Footer from "@/widgets/main-blocks/footer";
+import '../../styles/index.scss'
 
 // Font files can be colocated inside of `app`
 
@@ -11,70 +12,70 @@ import Footer from "@/widgets/main-blocks/footer";
 export const inter = localFont({
   src: [
     {
-      path: "../../public/fonts/Inter-Bold.woff2",
-      weight: "700",
-      style: "normal",
+      path: '../../public/fonts/Inter-Bold.woff2',
+      weight: '700',
+      style: 'normal',
     },
     {
-      path: "../../public/fonts/Inter-MediumItalic.woff2",
-      weight: "500",
-      style: "italic",
-    },
-
-    {
-      path: "../../public/fonts/Inter-Medium.woff2",
-      weight: "500",
-      style: "normal",
+      path: '../../public/fonts/Inter-MediumItalic.woff2',
+      weight: '500',
+      style: 'italic',
     },
 
     {
-      path: "../../public/fonts/Inter-SemiBold.woff2",
-      weight: "600",
-      style: "normal",
+      path: '../../public/fonts/Inter-Medium.woff2',
+      weight: '500',
+      style: 'normal',
     },
 
     {
-      path: "../../public/fonts/Inter-Regular.woff2",
-      weight: "400",
-      style: "normal",
+      path: '../../public/fonts/Inter-SemiBold.woff2',
+      weight: '600',
+      style: 'normal',
+    },
+
+    {
+      path: '../../public/fonts/Inter-Regular.woff2',
+      weight: '400',
+      style: 'normal',
     },
   ],
-  variable: "--font-family",
-  display: "swap",
-});
+  variable: '--font-family',
+  display: 'swap',
+})
 
 export const displace20 = localFont({
   src: [
     {
-      path: "../../public/fonts/Displace20-Bold.woff2",
-      weight: "700",
-      style: "normal",
+      path: '../../public/fonts/Displace20-Bold.woff2',
+      weight: '700',
+      style: 'normal',
     },
     {
-      path: "../../public/fonts/Displace20-Medium.woff2",
-      weight: "500",
-      style: "normal",
+      path: '../../public/fonts/Displace20-Medium.woff2',
+      weight: '500',
+      style: 'normal',
     },
   ],
-  variable: "--second-family",
-  display: "swap",
-});
+  variable: '--second-family',
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
-  title: "Главная | Innosocium",
-  description: "Innosocium - строим будущее России вместе",
+  title: 'Главная | Innosocium',
+  description: 'Innosocium - строим будущее России вместе',
   icons: {
-    icon: "/images/favicon.ico",
-    apple: "/images/favicon.png",
+    icon: '/images/favicon.ico',
+    apple: '/images/favicon.png',
   },
 
   // Предзагрузка критических ресурсов
-};
+}
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return (
     <html lang="en">
@@ -82,7 +83,7 @@ export default function RootLayout({
         <Header />
         <main className="wrapper">{children}</main>
 
-        <svg style={{ display: "none" }}>
+        <svg style={{ display: 'none' }}>
           <filter
             id="glass-distortion"
             x="0%"
@@ -99,31 +100,12 @@ export default function RootLayout({
               result="turbulence"
             ></feTurbulence>
             <feComponentTransfer in="turbulence" result="mapped">
-              <feFuncR
-                type="gamma"
-                amplitude="1"
-                exponent="10"
-                offset="0.5"
-              ></feFuncR>
-              <feFuncG
-                type="gamma"
-                amplitude="0"
-                exponent="1"
-                offset="0"
-              ></feFuncG>
-              <feFuncB
-                type="gamma"
-                amplitude="0"
-                exponent="1"
-                offset="0.5"
-              ></feFuncB>
+              <feFuncR type="gamma" amplitude="1" exponent="10" offset="0.5"></feFuncR>
+              <feFuncG type="gamma" amplitude="0" exponent="1" offset="0"></feFuncG>
+              <feFuncB type="gamma" amplitude="0" exponent="1" offset="0.5"></feFuncB>
             </feComponentTransfer>
 
-            <feGaussianBlur
-              in="turbulence"
-              stdDeviation="3"
-              result="softMap"
-            ></feGaussianBlur>
+            <feGaussianBlur in="turbulence" stdDeviation="3" result="softMap"></feGaussianBlur>
 
             <feSpecularLighting
               in="softMap"
@@ -155,8 +137,8 @@ export default function RootLayout({
             ></feDisplacementMap>
           </filter>
         </svg>
-        <Footer />
+        <Footer feedbackForm={<FeedbackForm />} />
       </body>
     </html>
-  );
+  )
 }

@@ -1,19 +1,24 @@
-"use client";
+'use client'
+
 /**
  * @file: footer/index.tsx
  * @description: Компонент футера проекта Innosocium
  * @dependencies: React, Image from Next.js
  * @created: 2025-01-27
  */
+import React from 'react'
 
-import Image from "next/image";
-import React from "react";
+import { WaveAnimationUI } from '@/shared/ui/wave-animation-ui'
+import InnosociumLogo from '@/source/icons/innosocium.svg'
+import Image from 'next/image'
 
-const Footer: React.FC = () => {
+const Footer: React.FC<{ feedbackForm?: React.ReactNode }> = ({ feedbackForm }) => {
   return (
     <footer className="footer">
+      <WaveAnimationUI noAnimation reversed />
       <div className="container">
-        <span className="name-contest">Инносоциум</span>
+        {feedbackForm}
+
         <div className="footer__content">
           {/* Контактная информация */}
           <div className="footer__contact-info">
@@ -29,11 +34,10 @@ const Footer: React.FC = () => {
               Москва, Краснопресненская набережная, д. 12
             </address>
           </div>
+          <InnosociumLogo className="zero-hero__main__logo name-contest" />
           {/* Нижняя часть футера */}
           <div className="footer__bottom">
-            <p className="footer__copyright-text">
-              © 2025 все права защищены.
-            </p>
+            <p className="footer__copyright-text">© 2025 все права защищены.</p>
 
             <div className="footer__social">
               <a
@@ -73,16 +77,17 @@ const Footer: React.FC = () => {
               <a href="/season-2025" className="footer__legal-link">
                 сезон {new Date().getFullYear()}
               </a>
+              <br />
               <a href="/privacy-policy" className="footer__legal-link">
                 политика конфиденциальности
               </a>
             </div>
           </div>
-          spa
+          spa A
         </div>
       </div>
     </footer>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer

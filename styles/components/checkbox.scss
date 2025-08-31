@@ -5,16 +5,20 @@
   position: relative;
 
   cursor: pointer;
-  font-size: 16px;
-  --gap: 8px;
-  --sizeIndicator: 20px;
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: -0.03em;
+  --gap: 10px;
+  --sizeIndicator: 18px;
   gap: var(--gap);
-  font-family: var(--second-family);
+
   @include font-setup(16, 22, 400);
-  letter-spacing: 0.01em;
+  user-select: none;
   align-items: center;
 
-  color: var(--color-main);
+  a {
+    text-decoration: underline;
+  }
 }
 
 .control .control__input {
@@ -29,7 +33,7 @@
   /* top: 50%; */
   /* transform: translate(0%, -50%); */
   min-width: var(--sizeIndicator);
-  border: 1px solid var(--color-accent-blue);
+  border: 1px solid var(--color-light-beige);
   position: relative;
   border-radius: 4px;
 }
@@ -49,7 +53,6 @@
 }
 
 .control:has(.control__input:disabled) .control__indicator {
-  background: var(--color-gray-2);
   opacity: 0.6;
   pointer-events: none;
 }
@@ -66,8 +69,6 @@
 }
 
 .control-radio .control__input:checked ~ .control__indicator {
-  background-color: var(--color-accent-blue);
-
   &:after {
     content: '';
     display: block;
@@ -78,7 +79,7 @@
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background-color: var(--color-white);
+    background-color: var(--color-light-beige);
   }
 }
 
@@ -87,8 +88,6 @@
     opacity: 1;
     z-index: 3;
   }
-
-  background-color: var(--color-accent-blue);
 }
 
 .control-checkbox .control__indicator:after {
@@ -97,13 +96,9 @@
   transform: translate(10px, 10px);
   width: 6px;
   height: 10px;
-  border: solid var(--color-white);
+  border: solid var(--color-green);
   border-width: 0 2px 2px 0;
   transform: translate(-50%, -50%) rotate(45deg);
-}
-
-.control-checkbox .control__input:disabled ~ .control__indicator:after {
-  border-color: var(--color-gray-1);
 }
 
 .control-checkbox .control__indicator::before {
@@ -116,7 +111,7 @@
   height: 4.5rem;
   margin-left: -1.3rem;
   margin-top: -1.3rem;
-  background: #2aa1c0;
+  background: var(--color-green);
   border-radius: 3rem;
   opacity: 0.6;
   z-index: 99999;

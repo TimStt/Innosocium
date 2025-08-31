@@ -1,0 +1,162 @@
+.partners {
+  position: relative;
+  padding-block: 100px;
+
+  &__title {
+    font-family: var(--second-family);
+    font-weight: 500;
+    font-size: 93px;
+    line-height: 100%;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    text-align: left;
+    color: var(--color-white);
+    margin-bottom: 100px;
+  }
+
+  &__content {
+    position: relative;
+    z-index: 2;
+  }
+
+  &__rows {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__row {
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+
+    &--second {
+      .partners__grid {
+        animation: slideRight 20s linear infinite;
+      }
+    }
+
+    &--third {
+      .partners__grid {
+        animation: slideLeft 20s linear infinite;
+      }
+    }
+
+    &--first {
+      .partners__grid {
+        animation: slideLeft 20s linear infinite;
+      }
+    }
+  }
+
+  &__track {
+    display: flex;
+    gap: 20px;
+    min-width: max-content;
+
+    backface-visibility: hidden;
+  }
+
+  &__grid {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    will-change: transform;
+    min-width: max-content;
+  }
+
+  &__item {
+    flex-shrink: 0;
+  }
+}
+
+// Стили для карточек партнеров
+.partner-card {
+  width: 323px;
+  height: 153px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+
+  &:hover .partner-card__logo {
+    filter: brightness(0) invert(1);
+  }
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__logo {
+    max-width: 120px;
+    max-height: 60px;
+    object-fit: contain;
+    z-index: 2;
+    // Делаем логотипы белыми
+  }
+
+  &__content {
+    text-align: center;
+  }
+
+  &__name {
+    font-family: var(--second-family);
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 120%;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    color: var(--color-white);
+    margin: 0 0 5px 0;
+  }
+
+  &__tagline {
+    font-size: 12px;
+    line-height: 120%;
+    color: var(--color-white);
+    margin: 0;
+    opacity: 0.8;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@keyframes slideLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes slideRight {
+  0% {
+    transform: translateX(-50%) translateZ(0);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.feedback-form__section {
+  padding-top: 100px;
+  position: relative;
+}

@@ -4,33 +4,32 @@
  * @dependencies: LiquidGlassUI, ExpertItem
  * @created: 2025-08-29
  */
-import { LiquidGlassUI } from "@/shared/ui/liquid-glass-ui";
-import React from "react";
-import type { ExpertItem } from "./experts.data";
+import React from 'react'
+
+import { LiquidGlassUI } from '@/shared/ui/liquid-glass-ui'
+
+import type { ExpertItem } from './experts.data'
 
 type ExpertCardProps = {
-  expert: ExpertItem;
-};
+  expert: ExpertItem
+}
 
 export const ExpertCard: React.FC<ExpertCardProps> = ({ expert }) => {
-  const { name, position, role, image } = expert;
+  const { name, position, role, image } = expert
 
   return (
     <LiquidGlassUI className="expert-card">
       <div className="expert-card__inner">
-        <img
-          src={image}
-          alt={`Фото ${name}`}
-          className="expert-card__image"
-          loading="lazy"
-        />
+        <div className="expert-card__image-wrapper">
+          <img src={image} alt={`Фото ${name}`} className="expert-card__image" loading="lazy" />
+        </div>
 
         <div className="expert-card__content">
           <span className="expert-card__badge badge" role="status">
             {
               {
-                expert: "Эксперт",
-                jury: "Жюри",
+                expert: 'Эксперт',
+                jury: 'Жюри',
               }[role]
             }
           </span>
@@ -39,5 +38,5 @@ export const ExpertCard: React.FC<ExpertCardProps> = ({ expert }) => {
         </div>
       </div>
     </LiquidGlassUI>
-  );
-};
+  )
+}

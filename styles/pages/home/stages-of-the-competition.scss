@@ -21,7 +21,9 @@
     align-items: center;
     justify-content: space-between;
     gap: 19px;
+    overflow: hidden;
     position: relative;
+    align-items: stretch;
     margin-bottom: 150px;
 
     li {
@@ -37,6 +39,7 @@
 .stage-card {
   padding: 10px;
   border-radius: 5px;
+  height: 100%;
   &__inner {
     z-index: 5;
     max-width: 287px;
