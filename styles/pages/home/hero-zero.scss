@@ -1,5 +1,5 @@
 .zero-hero {
-  margin-bottom: 100px;
+  padding-bottom: 50px;
 
   position: relative;
   &__main {
@@ -47,17 +47,12 @@
 
   &__cards {
     position: relative;
+    overflow: hidden;
+    padding-top: 100px;
     &-title {
-      --fontSizeMax: 93;
-      --fontSizeMin: 43;
       font-family: var(--second-family);
       font-weight: 500;
-      @include fluid-text(
-        var(--fontSizeMax),
-        var(--fontSizeMin),
-        font-size,
-        var(--container-max-width)
-      );
+      font-size: 93px;
 
       line-height: 100%;
       letter-spacing: -0.01em;
@@ -74,7 +69,7 @@
         }
 
         &:nth-child(2) {
-          text-indent: 40%;
+          text-align: right;
         }
 
         &:nth-child(3) {
@@ -82,7 +77,7 @@
         }
 
         &:last-child {
-          text-indent: 40%;
+          text-align: right;
         }
       }
     }
@@ -90,11 +85,11 @@
     &-list {
       margin-top: -2%;
       display: flex;
-      gap: 120px;
+      gap: 150px;
+      align-items: flex-end;
       overflow: hidden;
-      margin-inline: auto;
       width: max-content;
-      align-items: center;
+      margin-inline: auto;
     }
 
     &-item {
@@ -111,8 +106,121 @@
 
       // каждый 2й элемент
       &:nth-child(2n) {
-        margin-bottom: 10%;
+        margin-bottom: 8%;
       }
     }
+  }
+}
+
+@include adaptive-desktop {
+  .zero-hero__main {
+    padding-top: 254px;
+  }
+
+  .zero-hero__cards-list {
+    gap: 120px;
+  }
+
+  .zero-hero__cards-title {
+    font-size: 66px;
+  }
+}
+@include adaptive-notebook {
+  .zero-hero__main {
+    padding-top: 298px;
+  }
+
+  .zero-hero__cards-title {
+    font-size: 62px;
+  }
+
+  .zero-hero__cards-list {
+    gap: 100px;
+  }
+  .zero-hero__cards-title {
+    font-size: 53px;
+  }
+}
+
+@include adaptive-tablet {
+  .zero-hero__main__top-description {
+    font-size: 22px;
+  }
+
+  .zero-hero__main {
+    padding-top: 264px;
+  }
+
+  .zero-hero__main__top {
+    margin-bottom: 100px;
+  }
+
+  .zero-hero__cards {
+    padding-top: 98px;
+  }
+}
+
+@include adaptive-phone {
+  .zero-hero__main__top-description {
+    font-size: 16px;
+  }
+
+  .zero-hero__main {
+    padding-top: 269px;
+  }
+
+  .zero-hero__cards {
+    padding-top: 50px;
+  }
+
+  .zero-hero__cards-title {
+    font-size: 43px;
+  }
+
+  .zero-hero__cards-list {
+    gap: 60px;
+  }
+}
+
+@include adaptive-xsphone {
+  .zero-hero__main__top {
+    margin-bottom: 80px;
+    width: 100%;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+
+    flex-direction: column;
+
+    p {
+      margin-left: auto;
+    }
+  }
+
+  .zero-hero__main__logo {
+    margin-bottom: 11px;
+  }
+
+  .zero-hero__main {
+    padding-block: 79px 40px;
+  }
+
+  .zero-hero__cards .zero-hero__cards-title span {
+    font-size: 37px;
+    text-wrap: wrap;
+    text-align: left;
+    text-indent: 0;
+  }
+
+  .zero-hero__cards {
+    padding-top: 40px;
+  }
+
+  .zero-hero__cards-list {
+    gap: 40px;
+  }
+
+  .zero-hero {
+    padding-bottom: 40px;
   }
 }

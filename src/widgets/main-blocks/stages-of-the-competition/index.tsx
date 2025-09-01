@@ -23,7 +23,7 @@ export const StagesOfTheCompetition: React.FC = () => {
       <WaveAnimationUI noAnimation />
       <div className="container">
         <div className="stages__head">
-          <h2 className="stages__title">Этапы конкурса</h2>
+          <h2 className="stages__title title">Этапы конкурса</h2>
           <Link className="link-with-underline" href="/">
             Подробнее о конкурсе
           </Link>
@@ -41,9 +41,9 @@ export const StagesOfTheCompetition: React.FC = () => {
             )}
           >
             {stagesOfCompetition.map((item) => (
-              <span className="stage-card__number" key={item.id}>
-                {item.number}
-              </span>
+              <div className="stage-card__number-wrap" key={item.id}>
+                <span className="stage-card__number">{item.number}</span>
+              </div>
             ))}
           </li>
         </ul>

@@ -17,7 +17,7 @@ export const Experts: React.FC = () => {
     <section className="experts" aria-label="Эксперты и жюри конкурса">
       <WaveAnimationUI noAnimation reversed />
       <div className="container">
-        <h2 className="experts__title">
+        <h2 className="experts__title title">
           <span>Конкурс , в котором</span>
           <span>мы – твои помощники!</span>
         </h2>

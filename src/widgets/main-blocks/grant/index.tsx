@@ -3,13 +3,26 @@
  * @description: Компонент Grant
  * @created: 2025-08-29
  */
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import Image from "next/image";
+import GrantWord from "@/source/icons/grant-word.svg";
+import GrantWord1 from "@/source/icons/grant-word-1.svg";
+import GrantNumber from "@/source/icons/grant-number.svg";
+import { useIntersection } from "@/shared/hooks/use-intersection";
+import { cls } from "@/shared/libs/cls";
 
 export const Grant: React.FC = () => {
+  const [animate, setAnimate] = useState(false);
+
+  const ref = useIntersection(() => {
+    setAnimate(true);
+  });
   return (
     <section
-      className="grant"
+      className={cls("grant", animate && "animate")}
+      ref={ref}
       style={{ backgroundImage: "url(/images/grant.jpg)" }}
     >
       <div className="grant__inner container">
@@ -24,13 +37,11 @@ export const Grant: React.FC = () => {
           </span>
         </div>
 
-        <Image
-          src="/icons/grant.svg"
-          alt=""
-          width={1843}
-          height={772}
-          role="presentation"
-        />
+        <div className="grant__icon">
+          <img src={"/icons/grant-word-1.svg"} alt="Grant Word 1" />
+          <img src={"/icons/grant-number.svg"} alt="Grant Number" />
+          <img src={"/icons/grant-word.svg"} alt="Grant Word" />
+        </div>
       </div>
     </section>
   );

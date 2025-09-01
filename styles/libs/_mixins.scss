@@ -34,25 +34,25 @@
 }
 
 @mixin adaptive-notebook {
-  @media (min-width: 940px) and (max-width: 1199px) {
+  @media (max-width: 1199px) {
     @content;
   }
 }
 
 @mixin adaptive-tablet {
-  @media (min-width: 768px) and (max-width: 939px) {
+  @media (max-width: 939px) {
     @content;
   }
 }
 
 @mixin adaptive-phone {
-  @media (min-width: 650px) and (max-width: 767px) {
+  @media (max-width: 767px) {
     @content;
   }
 }
 
 @mixin adaptive-xsphone {
-  @media (min-width: 320px) and (max-width: 649px) {
+  @media (max-width: 649px) {
     @content;
   }
 }

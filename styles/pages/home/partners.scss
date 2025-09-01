@@ -1,76 +1,69 @@
 .partners {
-  position: relative;
+  width: 100%;
+  margin: auto;
   padding-block: 100px;
+  position: relative;
+  --listGap: 20px;
 
   &__title {
-    font-family: var(--second-family);
-    font-weight: 500;
-    font-size: 93px;
-    line-height: 100%;
-    letter-spacing: -0.01em;
-    text-transform: uppercase;
-    text-align: left;
-    color: var(--color-white);
     margin-bottom: 100px;
   }
 
-  &__content {
+  &__wrap {
     position: relative;
-    z-index: 2;
-  }
-
-  &__rows {
     display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  &__row {
-    display: flex;
-    justify-content: center;
     overflow: hidden;
-    position: relative;
-
-    &--second {
-      .partners__grid {
-        animation: slideRight 20s linear infinite;
-      }
-    }
-
-    &--third {
-      .partners__grid {
-        animation: slideLeft 20s linear infinite;
-      }
-    }
-
-    &--first {
-      .partners__grid {
-        animation: slideLeft 20s linear infinite;
-      }
-    }
+    user-select: none;
+    gap: var(--listGap);
   }
-
-  &__track {
-    display: flex;
-    gap: 20px;
-    min-width: max-content;
-
-    backface-visibility: hidden;
+  &__wrap + &__wrap {
+    margin-top: var(--listGap);
   }
-
-  &__grid {
-    display: flex;
-    gap: 20px;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    will-change: transform;
-    min-width: max-content;
-  }
-
-  &__item {
+  &__list {
     flex-shrink: 0;
+    display: flex;
+    gap: var(--listGap);
+
+    justify-content: space-around;
+    min-width: 100%;
+
+    &.marquee {
+      animation: scroll 20s linear infinite;
+    }
+
+    &-item {
+      width: 323px;
+      height: 153px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+
+      &:hover .partner-card__logo {
+        filter: brightness(0) invert(1);
+      }
+    }
   }
+}
+
+.reverce {
+  animation-direction: reverse;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(calc(-100% - var(--listGap)));
+  }
+}
+
+.feedback-form__section {
+  padding-top: 100px;
+  position: relative;
 }
 
 // Стили для карточек партнеров
@@ -94,39 +87,8 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    width: 100%;
-    height: 100%;
-  }
 
-  &__logo {
-    max-width: 120px;
-    max-height: 60px;
-    object-fit: contain;
     z-index: 2;
-    // Делаем логотипы белыми
-  }
-
-  &__content {
-    text-align: center;
-  }
-
-  &__name {
-    font-family: var(--second-family);
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 120%;
-    letter-spacing: -0.01em;
-    text-transform: uppercase;
-    color: var(--color-white);
-    margin: 0 0 5px 0;
-  }
-
-  &__tagline {
-    font-size: 12px;
-    line-height: 120%;
-    color: var(--color-white);
-    margin: 0;
-    opacity: 0.8;
   }
 
   &__link {
@@ -135,24 +97,6 @@
     display: block;
     width: 100%;
     height: 100%;
-  }
-}
-
-@keyframes slideLeft {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-@keyframes slideRight {
-  0% {
-    transform: translateX(-50%) translateZ(0);
-  }
-  100% {
-    transform: translateX(0);
   }
 }
 

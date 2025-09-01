@@ -29,10 +29,11 @@ const ZeroHero: React.FC = () => {
         <div className="container">
           <div className="zero-hero__main__top ">
             <h1 className="zero-hero__main__top-description">
-              Всероссийский студенческий конкурс социальных проектов
+              Всероссийский <br /> студенческий конкурс <br /> социальных
+              проектов
             </h1>
             <p className="zero-hero__main__top-description">
-              Заявите о себе и получите шанс реализовать свою идею
+              Заявите о себе <br /> и получите шанс <br /> реализовать свою идею
             </p>
           </div>
 
@@ -56,7 +57,7 @@ const ZeroHero: React.FC = () => {
       </div>
 
       <div className="zero-hero__cards">
-        {/* <WaveAnimationUI noAnimation reversed /> */}
+        <WaveAnimationUI noAnimation reversed />
         <div className="container">
           <h2 className="zero-hero__cards-title ">
             <span>Социальный конкурс,</span>

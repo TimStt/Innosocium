@@ -28,13 +28,12 @@ const AccordionItem: React.FC<AccordionItemProps> = ({ nomination, index }) => {
               {item.images && (
                 <div className="nominations__accordion__description-images">
                   {item.images.map((image, imageIndex) => (
-                    <Image
+                    <div
+                      className="nominations__accordion__description-image"
                       key={imageIndex}
-                      src={image}
-                      alt={image}
-                      width={100}
-                      height={100}
-                    />
+                    >
+                      <Image src={image} alt={image} width={100} height={100} />
+                    </div>
                   ))}
                 </div>
               )}
@@ -53,15 +52,20 @@ const AccordionItem: React.FC<AccordionItemProps> = ({ nomination, index }) => {
               {item.images && (
                 <div className="nominations__accordion__box-images">
                   {item.images.map((image, imageIndex) => (
-                    <Image
+                    <div
+                      className="nominations__accordion__box-image"
                       key={imageIndex}
-                      src={image}
-                      alt={image}
-                      width={420}
-                      height={364}
-                    />
+                    >
+                      <Image src={image} alt={image} width={420} height={364} />
+                    </div>
                   ))}
                 </div>
+              )}
+
+              {item.title && (
+                <h4 className="nominations__accordion__box-title mobile">
+                  {item.title}
+                </h4>
               )}
 
               {Array.isArray(item.value) ? (

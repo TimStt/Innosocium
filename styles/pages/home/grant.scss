@@ -17,21 +17,31 @@
     opacity: 50%;
   }
 
+  &:not(.animate) {
+    span {
+      animation: none !important;
+    }
+
+    .grant__icon svg {
+      animation: none;
+    }
+  }
+
   &__inner {
     position: relative;
     z-index: 2;
     height: max-content;
 
-    img {
-      max-width: 1843px;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      object-fit: cover;
-      object-position: center;
-      padding-block: var(--paddingBlockImage);
-      overflow: hidden;
-    }
+    // img {
+    //   max-width: 1843px;
+    //   width: 100%;
+    //   height: 100%;
+    //   pointer-events: none;
+    //   object-fit: cover;
+    //   object-position: center;
+    //   padding-block: var(--paddingBlockImage);
+    //   overflow: hidden;
+    // }
 
     span {
       --maxFontSize: 40;
@@ -50,16 +60,24 @@
       text-transform: uppercase;
 
       color: #eaeaea;
+      opacity: 0;
+      transform: translateY(0);
+      transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
       &.right {
         text-align: right;
         width: max-content;
+        transform: translateX(100px);
+
+        animation: slideInRight 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
       }
 
       &.left {
         text-align: left;
         width: max-content;
         margin-left: 50%;
+        transform: translateX(-100px);
+        animation: slideInLeft 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
       }
     }
   }
@@ -76,5 +94,137 @@
 
   @include adaptive-notebook {
     --paddingBlockImage: 107px 260px;
+  }
+
+  &__icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    flex-direction: column;
+    overflow: hidden;
+
+    max-width: 1843px;
+    width: 100%;
+    max-height: 772px;
+    height: 100%;
+
+    img {
+      animation-delay: 2s;
+      transform: translateY(-300%);
+      width: 100%;
+      height: 100%;
+    }
+
+    img:nth-child(1) {
+      animation-name: dropDownWord1;
+      animation-timing-function: cubic-bezier(0.25, 0.75, 0.5, 1);
+      animation-fill-mode: forwards;
+      animation-duration: 1s;
+    }
+    img:nth-child(2) {
+      animation-name: dropDownWord2;
+      animation-timing-function: cubic-bezier(0.25, 0.75, 0.5, 1);
+      animation-fill-mode: forwards;
+      animation-duration: 1s;
+    }
+    img:nth-child(3) {
+      animation-name: dropDownWord3;
+      animation-timing-function: cubic-bezier(0.25, 0.75, 0.5, 1);
+      animation-fill-mode: forwards;
+      animation-duration: 1s;
+      max-width: 1107px;
+      width: 100%;
+      max-height: 362px;
+      height: 100%;
+    }
+  }
+}
+
+@include adaptive-notebook {
+  .grant__text {
+    width: 57%;
+  }
+}
+
+@include adaptive-tablet {
+  .grant__text {
+    width: 80%;
+  }
+
+  .grant__inner span.left {
+    max-width: 328px;
+    margin-left: 50%;
+  }
+
+  .grant {
+    --paddingBlockImage: 79px 269px;
+  }
+}
+
+@include adaptive-phone {
+  .grant {
+    --paddingBlockImage: 247px 152px;
+  }
+
+  .grant__inner span {
+    font-size: 32px;
+  }
+}
+
+// Анимации
+@keyframes slideInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes dropDownWord1 {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%) rotate(-5deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(25%, 65%) rotate(19deg);
+  }
+}
+@keyframes dropDownWord2 {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%) rotate(-5deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotate(0);
+  }
+}
+@keyframes dropDownWord3 {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%) rotate(-5deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(-69%, -68%) rotate(30deg);
   }
 }
