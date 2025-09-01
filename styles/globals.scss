@@ -1,6 +1,6 @@
-@import "./libs/normalize.scss";
+@import './libs/normalize.scss';
 
-@import "./libs/variables.scss";
+@import './libs/variables.scss';
 
 html {
   scroll-behavior: smooth;
@@ -99,20 +99,20 @@ button {
 
 /* Основной контейнер скроллбара */
 ::-webkit-scrollbar {
-  width: 8px; /* Ширина вертикального скроллбара */
+  width: 2px; /* Ширина вертикального скроллбара */
   height: 8px; /* Высота горизонтального скроллбара */
 }
 
 /* Дорожка скроллбара (фон, по которому двигается ползунок) */
 ::-webkit-scrollbar-track {
-  background: var(--color-light-blue); /* Светло-серый полупрозрачный фон */
+  background: var(--color-blue); /* Светло-серый полупрозрачный фон */
   /* Закругленные углы дорожки */
 }
 
 /* Ползунок скроллбара (та часть, которую можно перетаскивать) */
 ::-webkit-scrollbar-thumb {
-  background: var(--color-light-blue-2); /* Темно-серый полупрозрачный цвет */
-  border-radius: 10px; /* Закругленные углы ползунка */
+  background: var(--color-light-beige); /* Темно-серый полупрозрачный цвет */
+
   transition: background var(--transition-normal) ease; /* Плавный переход цвета за 0.3 секунды */
 }
 
