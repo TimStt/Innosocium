@@ -27,8 +27,12 @@
     justify-content: space-around;
     min-width: 100%;
 
+    &.reverce {
+      animation-direction: reverse !important;
+    }
+
     &.marquee {
-      animation: scroll 20s linear infinite;
+      animation: scroll 30s linear infinite;
     }
 
     &-item {
@@ -46,10 +50,6 @@
       }
     }
   }
-}
-
-.reverce {
-  animation-direction: reverse;
 }
 
 @keyframes scroll {
@@ -103,4 +103,26 @@
 .feedback-form__section {
   padding-top: 100px;
   position: relative;
+}
+
+@include adaptive-phone {
+  .partners {
+    --listGap: 14px;
+    padding-bottom: 88px;
+  }
+  .partners__list-item,
+  .partner-card {
+    width: 234px;
+    height: 111px;
+  }
+
+  .partners__wrap + .partners__wrap {
+    margin-top: 20px;
+  }
+}
+
+@include adaptive-xsphone {
+  .partners {
+    padding-block: 80px 40px;
+  }
 }

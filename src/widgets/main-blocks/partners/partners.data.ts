@@ -157,4 +157,67 @@ export const partnersData: PartnerItem[] = [
     tagline: 'Совет Федерации',
     url: 'https://council.gov.ru',
   },
+  {
+    id: 22,
+    name: 'СФ',
+    logo: '/icons/partner7.svg',
+    tagline: 'Совет Федерации',
+    url: 'https://council.gov.ru',
+  },
+
+  {
+    id: 24,
+    name: 'СФ',
+    logo: '/icons/partner7.svg',
+    tagline: 'Совет Федерации',
+    url: 'https://council.gov.ru',
+  },
+
+  {
+    id: 25,
+    name: 'СФ',
+    logo: '/icons/partner10.svg',
+    tagline: 'Совет Федерации',
+    url: 'https://council.gov.ru',
+  },
+
+  {
+    id: 26,
+    name: 'СФ',
+    logo: '/icons/partner8.svg',
+    tagline: 'Совет Федерации',
+    url: 'https://council.gov.ru',
+  },
+
+  {
+    id: 27,
+    name: 'СФ',
+    logo: '/icons/partner9.svg',
+    tagline: 'Совет Федерации',
+    url: 'https://council.gov.ru',
+  },
+
+  {
+    id: 28,
+    name: 'СФ',
+    logo: '/icons/partner11.svg',
+    tagline: 'Совет Федерации',
+    url: 'https://council.gov.ru',
+  },
+
+  {
+    id: 29,
+    name: 'СФ',
+    logo: '/icons/partner11.svg',
+    tagline: 'Совет Федерации',
+    url: 'https://council.gov.ru',
+  },
+
+  {
+    id: 30,
+    name: 'СФ',
+    logo: '/icons/partner12.svg',
+    tagline: 'Совет Федерации',
+    url: 'https://council.gov.ru',
+  },
 ]

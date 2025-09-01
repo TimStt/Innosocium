@@ -26,14 +26,8 @@
 
     li {
       flex: 1;
-      min-width: calc(
-        100% / var(--totalStages) - var(--gapStages) * (var(--totalStages) - 1)
-      );
+      min-width: calc(100% / var(--totalStages) - var(--gapStages) * (var(--totalStages) - 1));
     }
-  }
-
-  &__button {
-    margin-bottom: 50px;
   }
 }
 

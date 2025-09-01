@@ -135,6 +135,13 @@ import Link from 'next/link'
  * @created: 2025-01-27
  */
 
+/**
+ * @file: feedback-form/index.tsx
+ * @description: Компонент формы обратной связи для подписки на обновления
+ * @dependencies: React, ButtonUI, LiquidGlassUI, InputUI
+ * @created: 2025-01-27
+ */
+
 const FeedbackForm: React.FC<{
   className?: string
 }> = ({ className }) => {
@@ -151,8 +158,7 @@ const FeedbackForm: React.FC<{
     <LiquidGlassUI className={cls('feedback-form', className)}>
       <div className="feedback-form__inner">
         <h3 className="feedback-form__title">
-          Получайте сообщения <br /> о каждом обновлении, <br /> которое мы публикуем.
-          <br /> Давайте будем на связи!
+          Получайте сообщения о каждом обновлении,которое мы публикуем. Давайте будем на связи!
         </h3>
 
         <form className="feedback-form__form" onSubmit={handleSubmit}>
