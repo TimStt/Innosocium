@@ -54,3 +54,4 @@ export const PartnerCard: React.FC<PartnerCardProps> = ({ partner }) => {
     </LiquidGlassUI>
   );
 };
+
