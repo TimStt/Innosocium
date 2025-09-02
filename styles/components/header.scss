@@ -186,3 +186,9 @@
     }
   }
 }
+
+@include adaptive-xsphone {
+  .mobile-nav {
+    top: 0%;
+  }
+}

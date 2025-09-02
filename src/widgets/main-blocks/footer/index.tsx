@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 /**
  * @file: footer/index.tsx
@@ -6,13 +6,15 @@
  * @dependencies: React, Image from Next.js
  * @created: 2025-01-27
  */
-import React from 'react'
+import React from "react";
 
-import { WaveAnimationUI } from '@/shared/ui/wave-animation-ui'
-import InnosociumLogo from '@/source/icons/innosocium.svg'
-import Image from 'next/image'
+import { WaveAnimationUI } from "@/shared/ui/wave-animation-ui";
+import InnosociumLogo from "@/source/icons/innosocium.svg";
+import Image from "next/image";
 
-const Footer: React.FC<{ feedbackForm?: React.ReactNode }> = ({ feedbackForm }) => {
+const Footer: React.FC<{ feedbackForm?: React.ReactNode }> = ({
+  feedbackForm,
+}) => {
   return (
     <footer className="footer">
       <WaveAnimationUI noAnimation reversed />
@@ -21,15 +23,17 @@ const Footer: React.FC<{ feedbackForm?: React.ReactNode }> = ({ feedbackForm }) 
 
         <div className="footer__content">
           {/* Контактная информация */}
+
+             <InnosociumLogo className="zero-hero__main__logo name-contest mobile" />
           <div className="footer__contact-info">
-            <div className="footer__contact-links">
+          
               <a href="tel:+74956404440" className="footer__contact-link">
                 +7(495)640-44-40
               </a>
               <a href="mailto:innsocium@mail.ru" className="footer__contact-link">
                 innsocium@mail.ru
               </a>
-            </div>
+        
 
             <address className="footer__contact-address">
               Москва, Краснопресненская набережная, д. 12
@@ -38,7 +42,9 @@ const Footer: React.FC<{ feedbackForm?: React.ReactNode }> = ({ feedbackForm }) 
           <InnosociumLogo className="zero-hero__main__logo name-contest" />
           {/* Нижняя часть футера */}
           <div className="footer__bottom">
-            <p className="footer__copyright-text">© 2025 все права защищены.</p>
+            <p className="footer__copyright-text">
+              © 2025 все права защищены.
+            </p>
 
             <div className="footer__social">
               <a
@@ -87,7 +93,7 @@ const Footer: React.FC<{ feedbackForm?: React.ReactNode }> = ({ feedbackForm }) 
         </div>
       </div>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

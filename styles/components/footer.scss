@@ -24,8 +24,9 @@
     justify-content: space-between;
     width: 100%;
     gap: 24px;
-    max-width: 60%;
+    max-width: calc(100% - 500px);
     margin-left: auto;
+    flex-wrap: wrap;
   }
 
   &__contact-link,
@@ -72,11 +73,49 @@
   &__contact-links {
     display: flex;
   }
+
+  .zero-hero__main__logo.mobile {
+    display: none;
+  }
+}
+
+@include adaptive-tablet {
+  .footer__contact-info {
+    justify-content: flex-end;
+    margin-bottom: 59px;
+  }
+  .footer .feedback-form {
+    margin-bottom: -31%;
+  }
 }
 
 @include adaptive-notebook {
   .feedback-form {
     margin-top: 40px;
+  }
+
+  address {
+    /* растянуть с первой строки до последней */
+    max-width: 152px;
+  }
+}
+
+@include adaptive-phone {
+  .zero-hero__main__logo:not(.mobile) {
+    display: none;
+  }
+
+  .footer__contact-info {
+    justify-content: space-between;
+    max-width: 100%;
+  }
+
+  .zero-hero__main__logo.mobile {
+    display: block !important;
+  }
+
+  .footer .feedback-form {
+    margin-bottom: -3%;
   }
 }
 

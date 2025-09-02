@@ -25,7 +25,7 @@ export const Grant: React.FC = () => {
       ref={ref}
       style={{ backgroundImage: "url(/images/grant.jpg)" }}
     >
-      <div className="grant__inner container">
+      <div className="grant__inner">
         <h2 className="visually-hidden">Выиграй грант на 400 000 рублей</h2>
 
         <div className="grant__text">
