@@ -8,7 +8,7 @@
   overflow: hidden;
 
   &:after {
-    content: "";
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
@@ -24,8 +24,10 @@
       animation: none !important;
     }
 
-    .grant__icon svg {
-      animation: none;
+    .grant__icon img {
+      animation: none !important;
+      opacity: 0;
+      transform: translateY(-300%);
     }
   }
 
@@ -55,6 +57,7 @@
       line-height: 120%;
       letter-spacing: -0.04em;
       text-transform: uppercase;
+      color: #eaeaea;
 
       transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
@@ -62,17 +65,43 @@
         text-align: right;
         width: max-content;
         transform: translateX(-100%);
-
-        animation: slideInRight 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
       }
 
       &.left {
         text-align: left;
         width: max-content;
         margin-left: auto;
-
-        animation: slideInLeft 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
         transform: translateX(100%);
+      }
+    }
+  }
+
+  // Анимации запускаются только при добавлении класса animate
+  &.animate {
+    span {
+      &.right {
+        animation: slideInRight 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+      }
+
+      &.left {
+        animation: slideInLeft 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+      }
+    }
+
+    .grant__icon {
+      img:nth-child(1) {
+        animation: dropDownWord1 2s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+        animation-delay: 3s;
+      }
+
+      img:nth-child(2) {
+        animation: dropDownWord2 2s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+        animation-delay: 2.5s;
+      }
+
+      img:nth-child(3) {
+        animation: dropDownWord3 2s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+        animation-delay: 2s;
       }
     }
   }
@@ -114,33 +143,18 @@
     }
 
     img:nth-child(1) {
-      animation-name: dropDownWord1;
-      animation-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
-      animation-fill-mode: forwards;
-      animation-duration: 2s;
       max-width: 1086px;
-      animation-delay: 3s;
     }
     img:nth-child(2) {
-      animation-name: dropDownWord2;
-      animation-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
-      animation-fill-mode: forwards;
-      animation-duration: 2s;
       max-width: 1107px;
       width: 100%;
-      animation-delay: 2.5s;
       height: 100%;
     }
     img:nth-child(3) {
-      animation-name: dropDownWord3;
-      animation-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
-      animation-fill-mode: forwards;
-      animation-duration: 2s;
       max-width: 738px;
       width: 100%;
       max-height: 362px;
       height: 100%;
-      animation-delay: 3s;
     }
   }
 }

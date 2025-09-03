@@ -49,6 +49,7 @@
     position: relative;
     overflow: hidden;
     padding-top: 100px;
+    margin-top: -1px;
     &-title {
       font-family: var(--second-family);
       font-weight: 500;
@@ -90,14 +91,14 @@
       gap: var(--gapList);
       align-items: flex-end;
       overflow: hidden;
-      width: max-content;
+      width: 100%;
       margin-inline: auto;
     }
 
     &-item {
       padding: 10px;
       border-radius: 5px;
-      width: calc((100% - (var(--gapList) / 2)) / var(--viewCards));
+      min-width: calc((100% - (var(--gapList) / 2)) / var(--viewCards));
       img {
         z-index: 10;
         height: 100%;
@@ -121,7 +122,8 @@
   }
 
   .zero-hero__cards-list {
-    gap: 120px;
+    --gapList: 120px;
+    --viewCards: 4;
   }
 
   .zero-hero__cards-title {
@@ -138,7 +140,8 @@
   }
 
   .zero-hero__cards-list {
-    gap: 100px;
+    --gapList: 100px;
+    --viewCards: 3;
   }
   .zero-hero__cards-title {
     font-size: 53px;

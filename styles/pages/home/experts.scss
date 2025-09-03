@@ -8,13 +8,15 @@
     display: inline-flex;
     width: 100%;
     flex-direction: column;
+    opacity: 0; // Скрыто до анимации
 
     span:nth-child(2n) {
       text-align: right;
     }
   }
+
   &__content {
-    overflow: hidden;
+    overflow: visible; // Разрешаем видимость карточек за пределами контейнера
   }
 
   &__description {
@@ -23,6 +25,8 @@
     margin-inline: auto;
     width: 50%;
     margin-bottom: 50px;
+    opacity: 0; // Скрыто до анимации
+
     p {
       font-weight: 400;
       font-size: 16px;
@@ -39,15 +43,38 @@
 
   &__list {
     --gapList: 80px;
+    --viewCards: 4;
     display: flex;
-    width: max-content;
+    width: 100%;
     align-items: flex-end;
     margin-inline: auto;
     gap: var(--gapList);
     margin-bottom: 100px;
+    overflow: visible; // Важно: разрешаем карточкам выходить за границы
+    position: relative;
+    will-change: transform;
 
-    li:nth-child(2n) {
-      margin-bottom: 7%;
+    // Убираю градиент - он не нужен
+
+    // Добавляем CSS анимацию для бесконечного слайдера
+    &.marquee {
+      animation: scroll-experts 25s linear infinite;
+    }
+  }
+
+  &__button {
+    opacity: 0; // Скрыто до анимации
+  }
+}
+
+// Стили для анимации слов заголовка
+.experts__title {
+  .word {
+    display: inline-block;
+    margin-right: 0.3em;
+
+    &:last-child {
+      margin-right: 0;
     }
   }
 }
@@ -55,14 +82,38 @@
 .expert-card {
   padding: 10px;
   border-radius: 5px;
-  width: min-content;
+  min-width: calc((100% - (var(--gapList) / 2)) / var(--viewCards));
+
+  // Начальные состояния для GSAP анимации
+  transform-origin: center;
+  will-change: transform, opacity, clip-path, filter;
+  transition: transform 0.3s ease-out;
+  cursor: grab;
+  user-select: none;
+  opacity: 0; // Скрыто до анимации
+  clip-path: circle(0% at 50% 50%); // Скрыто до анимации
+
+  &:active {
+    cursor: grabbing;
+  }
+
+  &.dragging {
+    cursor: grabbing;
+    z-index: 10;
+    transition: none; // Отключаем transition во время перетаскивания
+  }
+
+  // Состояние возврата на позицию
+  &.returning {
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
 
   &__image-wrapper {
     width: max-content;
-
     overflow: hidden;
     position: relative;
     margin-bottom: 10px;
+
     &:before {
       content: '';
       position: absolute;
@@ -102,12 +153,36 @@
     object-fit: scale-down;
     object-position: center;
     position: relative;
+
+    // Начальное состояние для анимации
+    transform: scale(1.12);
+    transition: all 420ms ease;
+    will-change: transform;
   }
+
   &__position {
     font-weight: 400;
     font-size: 16px;
     line-height: 120%;
     letter-spacing: -0.03em;
+  }
+
+  // Конечное состояние после анимации
+  &.final {
+    clip-path: circle(160% at 50% 50%);
+    transform: translateY(0px) scale(1);
+    opacity: 1;
+
+    img {
+      transform: scale(1);
+    }
+  }
+}
+
+@include adaptive-desktop {
+  .experts__list {
+    --viewCards: 3;
+    --gapList: 80px;
   }
 }
 
@@ -140,5 +215,67 @@
   }
   .experts__list {
     margin-bottom: 85px;
+  }
+}
+
+// Дополнительные стили для интерактивности
+.experts__list {
+  // Плавное появление дубликатов карточек
+  .expert-card:nth-child(n + 5) {
+    opacity: 0.95;
+    filter: brightness(0.98);
+  }
+
+  // Улучшения для touch устройств
+  @media (hover: none) and (pointer: coarse) {
+    .expert-card {
+      cursor: grab;
+
+      &:active {
+        cursor: grabbing;
+      }
+    }
+  }
+
+  // Улучшения производительности для анимации
+  .expert-card {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+  }
+}
+
+// Анимация для плавного возврата карточек на позицию
+.expert-card {
+  &.returning {
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+}
+
+// Предотвращение выделения текста при перетаскивании
+.experts__list {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+// Стили для элементов списка
+.experts__item {
+  &:nth-child(2n) {
+    margin-bottom: 7%;
+  }
+}
+
+// Keyframes для бесконечного слайдера экспертов
+@keyframes scroll-experts {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(calc(-100% - var(--gapList)));
   }
 }
