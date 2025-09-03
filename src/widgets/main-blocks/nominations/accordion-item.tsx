@@ -6,7 +6,7 @@
  */
 
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { NominationItem } from "./data";
 import { AccordionUI } from "@/shared/ui/accordion-ui";
 import ArrowIcon from "@/source/icons/arrow.svg";
@@ -95,6 +95,44 @@ const AccordionItem: React.FC<AccordionItemProps> = ({ nomination, index }) => {
 
   const [isOpen, setIsOpen] = useState(false);
 
+  const refSummary = useRef<HTMLDetailsElement>(null);
+
+  const [heightSummary, setHeightSummary] = useState(0);
+
+  useEffect(() => {
+    const observer = () => {
+      if (refSummary.current && isOpen) {
+        const oldHeight = refSummary.current.getBoundingClientRect().height;
+        const clone = refSummary.current.cloneNode(true) as HTMLDivElement;
+        console.log(oldHeight);
+        clone.style.height = "max-content";
+        clone.style.position = "absolute";
+        clone.style.opacity = "0";
+        clone.style.pointerEvents = "none";
+        clone.style.visibility = "hidden";
+
+        const text = clone.querySelector("span") as HTMLSpanElement;
+
+        console.log(clone);
+
+        document.body.appendChild(clone);
+        text.style.display = "inline-block";
+
+        clone.style.padding = refSummary.current.style.padding;
+        console.log(text);
+
+        const textHeight = text.offsetHeight;
+        console.log(textHeight);
+        const blockHeight = clone.offsetHeight;
+
+        console.log("textHeight", textHeight);
+        console.log("blockHeight", blockHeight);
+        setHeightSummary(blockHeight);
+      }
+    };
+    observer();
+  }, [isOpen]);
+
   return (
     <AccordionUI
       classNameRoot={cls("nominations__accordion", {
@@ -104,9 +142,11 @@ const AccordionItem: React.FC<AccordionItemProps> = ({ nomination, index }) => {
       classNameWrapper="nominations__accordion-content"
       classNameSummary="nominations__accordion-summary"
       titleSummary={nomination.title}
+      accordionRef={refSummary}
       propsRoot={{
         style: {
           zIndex: index + 1,
+          "--heightOpenSummary": heightSummary + "px",
         } as React.CSSProperties,
       }}
       summaryContent={

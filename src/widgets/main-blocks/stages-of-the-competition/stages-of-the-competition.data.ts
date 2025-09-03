@@ -35,7 +35,7 @@ export const stagesOfCompetition: StageItem[] = [
     id: 3,
     number: 3,
     title: "Объявление финалистов",
-    dateStart: "—",
+
     dateEnd: "12.02.26",
   },
   {
@@ -56,7 +56,7 @@ export const stagesOfCompetition: StageItem[] = [
     id: 6,
     number: 6,
     title: "Питчинг проектов и объявление победителей",
-    dateStart: "—",
+
     dateEnd: "24.03.26",
   },
 ];

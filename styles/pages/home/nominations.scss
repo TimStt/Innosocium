@@ -18,6 +18,12 @@
   &__accordion {
     --heightSummary: 274px;
     --heightOpenSummary: 196px;
+    --paddingContent: 20px;
+    --paddingSummary: 20px;
+    --delay-arrow: 0.1s;
+    --delay-summary: 0.2s;
+    --delay-text: 0.3s;
+    --delay-content: 0.4s;
     position: relative;
     --heightAccordion: 1164px;
     border-radius: 10px;
@@ -40,28 +46,55 @@
 
       .nominations__accordion-summary {
         height: var(--heightOpenSummary);
+        transition-delay: var(--delay-summary);
+
         svg {
           transform: rotate(180deg);
           stroke: var(--color-green);
           color: var(--color-green);
+          transition-delay: var(--delay-arrow);
         }
       }
 
-      .nominations__accordion__description {
-        transform: translate(0, var(--heightOpenSummary));
+      .nominations__accordion-summary span {
+        display: inline-block;
+        transition-delay: var(--delay-text);
       }
 
       .accordion__content {
         transform: translate(0, calc(var(--heightOpenSummary) * -1));
+        transition-delay: var(--delay-content);
+      }
+    }
+
+    // Стили для закрытого состояния с обратными задержками
+    &:not(:has(.nominations__accordion-details[open])) {
+      .nominations__accordion-summary {
+        transition-delay: 0s; // Без задержки при закрытии
+
+        svg {
+          transition-delay: 0s; // Без задержки при закрытии
+        }
+      }
+
+      .nominations__accordion-summary span {
+        transition-delay: 0s; // Без задержки при закрытии
+      }
+
+      .accordion__content {
+        transition-delay: 0s; // Без задержки при закрытии
       }
     }
 
     &-summary {
-      transition-duration: var(--transition-normal);
+      transition:
+        height var(--transition-normal) ease,
+        background-color var(--transition-normal) ease;
+      transition-delay: 0s; // Сброс задержки для закрытого состояния
       display: flex;
       padding: 20px;
       height: var(--heightSummary);
-
+      height: 100%t;
       justify-content: space-between;
       align-items: flex-start;
       color: var(--color-light-beige);
@@ -70,7 +103,7 @@
         font-weight: 600;
         font-size: 65px;
         display: -webkit-box;
-        -webkit-line-clamp: 2;
+        -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
         overflow: hidden;
         width: 50%;
@@ -88,17 +121,29 @@
         width: 40px;
         height: 40px;
         z-index: 4;
+        transition:
+          transform var(--transition-normal) ease,
+          stroke var(--transition-normal) ease,
+          color var(--transition-normal) ease;
+        transition-delay: 0s; // Сброс задержки для закрытого состояния
       }
     }
 
     &__description {
-      padding-left: 20px;
-      padding-bottom: 20px;
-      margin-top: 0px;
-      will-change: margin-top;
+      padding-left: var(--paddingSummary);
+      padding-bottom: var(--paddingContent);
+      margin-top: var(--heightOpenSummary);
 
+      margin-bottom: var(--heightOpenSummary);
+      height: max-content;
       flex: 1;
-      transition-duration: var(--transition-normal);
+      margin-bottom: 0px;
+      transition:
+        margin-top var(--transition-normal) ease,
+        margin-bottom var(--transition-normal) ease;
+      will-change: margin-bottom margin-top;
+
+      margin-bottom: var(--heightOpenSummary);
       p {
         font-weight: 700;
         text-transform: uppercase;
@@ -134,7 +179,8 @@
     }
 
     &__box {
-      padding: 20px 60px 20px 20px;
+      padding: var(--paddingContent) 60px var(--paddingContent)
+        var(--paddingContent);
       flex: 1;
       overflow: auto;
       max-height: var(--heightAccordion);
@@ -213,16 +259,20 @@
       transition-duration: var(--transition-normal);
       display: flex;
       gap: 24px;
-      will-change: margin-top;
-      margin-top: 0px;
+      margin-bottom: 0px;
+      will-change: transform;
+      margin-bottom: calc((var(--heightOpenSummary)) * -1);
       justify-content: space-between;
+      padding-bottom: calc((var(--heightOpenSummary)) * -1);
+      transition-duration: var(--transition-normal);
+      transition-property: transform margin-bottom;
     }
   }
 }
 @include adaptive-desktop {
   .nominations__accordion {
     --heightSummary: 170px;
-    --heightOpenSummary: 140px;
+    // --heightOpenSummary: 140px;
   }
   .nominations__accordion-summary span {
     font-size: 40px;
@@ -262,7 +312,7 @@
 @include adaptive-tablet {
   .nominations__accordion {
     --heightSummary: 133px;
-    --heightOpenSummary: 103px;
+    // --heightOpenSummary: 103px;
   }
   .nominations__accordion-summary span {
     font-size: 26px;
@@ -278,7 +328,7 @@
 @include adaptive-phone {
   .nominations__accordion {
     --heightSummary: 102px;
-    --heightOpenSummary: 102px;
+    // --heightOpenSummary: 102px;
   }
 
   .nominations__accordion-content {
@@ -294,10 +344,13 @@
       height: 100%;
     }
   }
-
+  .accordion__content {
+    margin-bottom: 0px;
+  }
   .nominations__accordion:has(.nominations__accordion-details[open]) {
     .accordion__content {
       transform: none;
+      margin-bottom: 0;
     }
 
     .nominations__accordion-summary {
@@ -306,12 +359,14 @@
 
     .nominations__accordion__description {
       transform: none;
+      margin-bottom: 0;
     }
   }
 
   .nominations__accordion__description {
     padding-bottom: 0px;
     padding-right: 20px;
+
     flex: 0;
   }
 
@@ -353,7 +408,7 @@
   }
   .nominations__accordion {
     --heightSummary: 89px;
-    --heightOpenSummary: 89px;
+    // --heightOpenSummary: 89px;
   }
   .nominations__accordion-summary svg {
     width: 20px;

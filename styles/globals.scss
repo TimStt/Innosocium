@@ -116,47 +116,87 @@ button {
   transition: background var(--transition-normal) ease; /* Плавный переход цвета за 0.3 секунды */
 }
 
-.liquidGlass-effect {
-  position: absolute;
-  z-index: 0;
-  inset: 0;
-  backdrop-filter: blur(2.5px);
-  filter: url(#glass-distortion);
-  overflow: hidden;
-  isolation: isolate;
+.liquidGlass {
+  position: relative;
+  background: light-dark(hsl(0 0% 100% / 0.05), hsl(0 0% 0% / 0.05));
+
+  backdrop-filter: url(#filter) saturate(1);
+  box-shadow:
+    0 0 2px 1px
+      light-dark(
+        color-mix(in oklch, canvasText, #0000 85%),
+        color-mix(in oklch, canvasText, #0000 65%)
+      )
+      inset,
+    0 0 10px 4px
+      light-dark(
+        color-mix(in oklch, canvasText, #0000 90%),
+        color-mix(in oklch, canvasText, #0000 85%)
+      )
+      inset,
+    0px 4px 16px rgba(17, 17, 26, 0.05),
+    0px 8px 24px rgba(17, 17, 26, 0.05),
+    0px 16px 56px rgba(17, 17, 26, 0.05),
+    0px 4px 16px rgba(17, 17, 26, 0.05) inset,
+    0px 8px 24px rgba(17, 17, 26, 0.05) inset,
+    0px 16px 56px rgba(17, 17, 26, 0.05) inset;
 }
 
-.liquidGlass-tint {
-  z-index: 1;
+.liquidGlass__filter {
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
   position: absolute;
   inset: 0;
+}
+
+.displacement-image {
+  height: 100%;
+  width: 100%;
+  pointer-events: none;
+}
+
+.liquidGlassBlur__filter {
+  z-index: 0;
+  backdrop-filter: blur(4px);
+  filter: url(#liquidGlassBlurFilter) saturate(1);
+}
+
+.liquidGlassBlur__filter,
+.liquidGlassBlur__overlay,
+.liquidGlassBlur__specular {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+
+.finder {
+  position: fixed;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 100px;
+
+  top: 50%;
+  left: 50%;
+  z-index: 99999;
+
+  img {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+.liquidGlassBlur__overlay {
+  z-index: 1;
   background: rgba(255, 255, 255, 0.25);
 }
 
-.liquidGlass-wrapper {
-  position: relative;
-  display: flex;
-  font-weight: 600;
-  overflow: hidden;
-
-  cursor: pointer;
-
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 2.2);
-}
-
-.liquidGlass-shine {
-  position: absolute;
-  inset: 0;
+.liquidGlassBlur__specular {
   z-index: 2;
-  overflow: hidden;
   box-shadow:
-    inset 2px 2px 1px 0 rgba(255, 255, 255, 0.5),
-    inset -1px -1px 1px 1px rgba(255, 255, 255, 0.5);
+    inset 1px 1px 0 rgba(255, 255, 255, 0.75),
+    inset 0 0 5px rgba(255, 255, 255, 0.75);
 }
-
-// Первая анимация - движение по всей области
-
-// Третья анимация - движение по всей области
 
 /* Ползунок при наведении курсора */
 ::-webkit-scrollbar-thumb:hover {
@@ -189,6 +229,7 @@ button {
   font-size: 93px;
   line-height: 100%;
   letter-spacing: -0.01em;
+  text-transform: uppercase;
 }
 
 @include adaptive-notebook {

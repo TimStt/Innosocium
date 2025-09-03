@@ -17,6 +17,7 @@ export interface IAccordion extends DetailsHTMLAttributes<HTMLDetailsElement> {
   rootMouseLeave?: () => void;
   classNameWrapper?: string;
   propsRoot?: React.HTMLAttributes<HTMLDivElement>;
+  refSummary?: Ref<HTMLDivElement>;
 }
 export const AccordionUI = ({
   classNameRoot,
@@ -35,6 +36,7 @@ export const AccordionUI = ({
   rootOnClick,
   classNameWrapper,
   propsRoot,
+  refSummary,
   ...props
 }: IAccordion) => {
   const id = useId();
@@ -64,6 +66,7 @@ export const AccordionUI = ({
         <summary
           className={cls("accordion__summary", classNameSummary)}
           role="term"
+          ref={refSummary}
           aria-details={id}
           title={titleSummary}
         >
