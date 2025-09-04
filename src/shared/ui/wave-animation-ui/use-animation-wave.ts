@@ -1,4 +1,11 @@
-import { useCallback, useLayoutEffect, useRef, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 
 export const useAnimationWave = ({
   noAnimation = false,
@@ -6,7 +13,8 @@ export const useAnimationWave = ({
   noAnimation?: boolean;
 }) => {
   // ====== Константы ======
-  const CELL_WIDTH = 88; // ширина грани
+
+  // ширина грани
   const P_MAX = 98; // у курсора: градиент почти до низа
   const P_MIN = 55; // далеко: короче, но заметный
   const CENTER = 0.5; // центр экрана в долях
@@ -28,7 +36,17 @@ export const useAnimationWave = ({
 
   const renderCells = () => {
     if (typeof window === "undefined" || !bgRef.current) return;
-    const needed = Math.max(1, Math.ceil(window.innerWidth / CELL_WIDTH));
+
+    const cellWidth = +window
+      .getComputedStyle(bgRef.current)
+      .getPropertyValue("grid-auto-columns")
+      .replace("px", "");
+
+    console.log("cellWidthCurrent", cellWidth);
+    const needed = Math.max(
+      1,
+      Math.ceil(window.innerWidth / (+cellWidth || 0))
+    );
 
     const current = bgRef.current.children.length;
     for (let i = current; i < needed; i++) {
@@ -109,7 +127,7 @@ export const useAnimationWave = ({
     requestAnimationFrame(() => updateGradients(lastX));
   }, []);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const resize = () => {
       renderCells();
       requestAnimationFrame(() => updateGradients(lastX));

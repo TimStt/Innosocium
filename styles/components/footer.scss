@@ -1,6 +1,7 @@
 .footer {
   position: relative;
   margin-top: -1px;
+  padding-bottom: 26px;
 
   &__content {
     display: flex;
@@ -14,9 +15,10 @@
 
   &__social {
     display: flex;
-    svg {
-      width: 42px;
-      height: 42px;
+    align-items: center;
+    img {
+      min-width: 41px;
+      min-height: 41px;
     }
   }
 
@@ -25,9 +27,16 @@
     justify-content: space-between;
     width: 100%;
     gap: 24px;
-    max-width: calc(100% - 500px);
+    max-width: calc(100% - 500px - 68px);
     margin-left: auto;
     flex-wrap: wrap;
+
+    a {
+      transition-duration: var(--transition-normal);
+      &:hover {
+        color: var(--color-green);
+      }
+    }
   }
 
   &__contact-link,
@@ -51,7 +60,7 @@
     display: flex;
     justify-content: space-between;
     gap: 24px;
-
+    align-items: center;
     font-weight: 400;
     font-size: 14px;
     letter-spacing: -0.01em;
@@ -66,6 +75,13 @@
   &__legal {
     text-align: right;
     opacity: 0.8;
+
+    &-link {
+      opacity: 0.8;
+      &.mobile {
+        display: none;
+      }
+    }
   }
 
   &__social-link {
@@ -75,8 +91,29 @@
     display: flex;
   }
 
-  .zero-hero__main__logo.mobile {
+  &__logo.mobile {
     display: none;
+  }
+}
+
+@include adaptive-desktop {
+  .footer .feedback-form {
+    margin-bottom: -11%;
+  }
+}
+
+@include adaptive-notebook {
+  .feedback-form {
+    margin-top: 40px;
+  }
+
+  .footer .feedback-form {
+    margin-bottom: -16%;
+  }
+
+  address {
+    /* растянуть с первой строки до последней */
+    max-width: 152px;
   }
 }
 
@@ -86,23 +123,18 @@
     margin-bottom: 59px;
   }
   .footer .feedback-form {
-    margin-bottom: -31%;
+    margin-bottom: -28%;
   }
 }
 
-@include adaptive-notebook {
-  .feedback-form {
-    margin-top: 40px;
-  }
-
-  address {
-    /* растянуть с первой строки до последней */
-    max-width: 152px;
+@media (max-width: 800px) {
+  .footer .feedback-form {
+    margin-bottom: -34%;
   }
 }
 
 @include adaptive-phone {
-  .zero-hero__main__logo:not(.mobile) {
+  .footer__logo:not(.mobile) {
     display: none;
   }
 
@@ -111,7 +143,7 @@
     max-width: 100%;
   }
 
-  .zero-hero__main__logo.mobile {
+  .footer__logo.mobile {
     display: block !important;
   }
 
@@ -124,8 +156,39 @@
   .feedback-form__title {
     font-size: 16px;
   }
+  .footer__legal {
+    display: none;
+  }
+  .footer__legal-link.mobile {
+    display: inline-block;
+  }
 
   .footer .feedback-form {
     margin-top: 40px;
+  }
+
+  .footer__bottom {
+    flex-wrap: wrap;
+  }
+
+  .footer {
+    padding-bottom: 20px;
+  }
+
+  .footer__contact-address {
+    min-width: 100%;
+  }
+
+  .footer__contact-info {
+    margin-bottom: 80px;
+  }
+
+  .footer__logo.mobile {
+    margin-bottom: 32px;
+  }
+
+  .footer .feedback-form__submit-button {
+    max-width: 142px;
+    margin-left: auto;
   }
 }

@@ -3,6 +3,8 @@
   position: relative;
   padding-bottom: 50px;
 
+  --gapList: 80px;
+
   &__title {
     margin-bottom: 20px;
     display: inline-flex;
@@ -41,17 +43,27 @@
     }
   }
 
+  &.dragging {
+    .experts__list {
+      animation-play-state: paused;
+    }
+
+    .expert-card {
+      cursor: grabbing;
+      z-index: 10;
+      transition: none; // Отключаем transition во время перетаскивания
+    }
+  }
+
   &__list {
-    --gapList: 80px;
-    --viewCards: 4;
-    display: flex;
-    width: 100%;
-    align-items: flex-end;
-    margin-inline: auto;
-    gap: var(--gapList);
     margin-bottom: 100px;
-    overflow: visible; // Важно: разрешаем карточкам выходить за границы
+    // overflow: visible;
+    // overflow: visible; // Важно: разрешаем карточкам выходить за границы
+    display: flex;
+    gap: var(--gapList);
+    overflow: hidden;
     position: relative;
+    align-items: flex-end;
     will-change: transform;
 
     // Убираю градиент - он не нужен
@@ -59,11 +71,23 @@
     // Добавляем CSS анимацию для бесконечного слайдера
     &.marquee {
       animation: scroll-experts 25s linear infinite;
+      animation-direction: reverse;
     }
+  }
+
+  &__item {
+    width: auto !important;
   }
 
   &__button {
     opacity: 0; // Скрыто до анимации
+  }
+
+  &__list-container {
+    display: flex;
+    gap: var(--gapList);
+    justify-content: center;
+    overflow: hidden;
   }
 }
 
@@ -82,8 +106,8 @@
 .expert-card {
   padding: 10px;
   border-radius: 5px;
-  min-width: calc((100% - (var(--gapList) / 2)) / var(--viewCards));
-
+  // min-width: calc((100% - (var(--gapList) / 2)) / var(--viewCards));
+  width: min-content;
   // Начальные состояния для GSAP анимации
   transform-origin: center;
   will-change: transform, opacity, clip-path, filter;
@@ -95,12 +119,6 @@
 
   &:active {
     cursor: grabbing;
-  }
-
-  &.dragging {
-    cursor: grabbing;
-    z-index: 10;
-    transition: none; // Отключаем transition во время перетаскивания
   }
 
   // Состояние возврата на позицию
@@ -115,7 +133,7 @@
     margin-bottom: 10px;
 
     &:before {
-      content: '';
+      content: "";
       position: absolute;
       inset: 0;
       z-index: 1;
@@ -179,8 +197,17 @@
   }
 }
 
+@keyframes scroll-experts {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(calc(-100% - var(--gapList)));
+  }
+}
+
 @include adaptive-desktop {
-  .experts__list {
+  .experts {
     --viewCards: 3;
     --gapList: 80px;
   }
@@ -267,15 +294,5 @@
 .experts__item {
   &:nth-child(2n) {
     margin-bottom: 7%;
-  }
-}
-
-// Keyframes для бесконечного слайдера экспертов
-@keyframes scroll-experts {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(calc(-100% - var(--gapList)));
   }
 }

@@ -32,7 +32,11 @@
     max-height: var(--heightAccordion);
     box-shadow: 0 -6px 30px 0 rgba(5, 31, 47, 0.45);
     transition-duration: var(--transition-normal);
-    background: linear-gradient(180deg, rgba(2, 121, 193, 0.5) 0%, rgba(255, 42, 146, 0.5) 100%);
+    background: linear-gradient(
+      180deg,
+      rgba(2, 121, 193, 0.5) 0%,
+      rgba(255, 42, 146, 0.5) 100%
+    );
     &:has(.nominations__accordion-details[open]) {
       background: linear-gradient(
         180deg,
@@ -41,7 +45,7 @@
       );
 
       .nominations__accordion-summary {
-        height: var(--heightOpenSummary);
+        min-height: var(--heightOpenSummary);
         transition-delay: var(--delay-summary);
 
         svg {
@@ -83,13 +87,11 @@
     }
 
     &-summary {
-      transition:
-        height var(--transition-normal) ease,
-        background-color var(--transition-normal) ease;
       transition-delay: 0s; // Сброс задержки для закрытого состояния
       display: flex;
       padding: 20px;
-      height: var(--heightSummary);
+      min-height: var(--heightSummary);
+      transition-duration: var(--transition-normal);
       height: 100%t;
       justify-content: space-between;
       align-items: flex-start;
@@ -98,9 +100,7 @@
       span {
         font-weight: 600;
         font-size: 65px;
-        display: -webkit-box;
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
+
         overflow: hidden;
         width: 50%;
         line-height: 120%;
@@ -175,7 +175,8 @@
     }
 
     &__box {
-      padding: var(--paddingContent) 60px var(--paddingContent) var(--paddingContent);
+      padding: var(--paddingContent) 60px var(--paddingContent)
+        var(--paddingContent);
       flex: 1;
       overflow: auto;
       max-height: var(--heightAccordion);
@@ -285,7 +286,10 @@
     font-size: 26px;
   }
 
-  .nominations__accordions .nominations__accordion .nominations__accordion__box-image img {
+  .nominations__accordions
+    .nominations__accordion
+    .nominations__accordion__box-image
+    img {
     max-width: 412px;
     width: 100%;
     max-height: 235px;
@@ -433,7 +437,10 @@
     }
   }
 
-  .nominations__accordions .nominations__accordion .nominations__accordion__box-image img {
+  .nominations__accordions
+    .nominations__accordion
+    .nominations__accordion__box-image
+    img {
     max-width: 100%;
     width: 100%;
     max-height: 100%;

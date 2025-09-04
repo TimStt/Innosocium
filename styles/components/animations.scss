@@ -18,3 +18,33 @@
     transform: rotate(180deg);
   }
 }
+
+@include adaptive-desktop {
+  .wave-background {
+    grid-auto-columns: 65.22px;
+  }
+}
+
+@include adaptive-notebook {
+  .wave-background {
+    grid-auto-columns: 46.38px;
+  }
+}
+
+@include adaptive-tablet {
+  .wave-background {
+    grid-auto-columns: 41.18px;
+  }
+}
+
+@include adaptive-phone {
+  .wave-background {
+    grid-auto-columns: 29.44px;
+  }
+}
+
+@include adaptive-xsphone {
+  .wave-background {
+    grid-auto-columns: 14.49px;
+  }
+}

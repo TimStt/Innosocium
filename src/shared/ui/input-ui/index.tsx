@@ -3,15 +3,16 @@
  * @description: Компонент InputUI для переиспользования
  * @created: 2025-01-27
  */
-import React from 'react'
+import React, { useId } from "react";
 
-import { cls } from '@/shared/libs/cls'
+import { cls } from "@/shared/libs/cls";
 
-export interface InputUIProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  children?: React.ReactNode
-  className?: string
-  label?: string
-  labelClassName?: string
+export interface InputUIProps
+  extends React.InputHTMLAttributes<HTMLInputElement> {
+  children?: React.ReactNode;
+  className?: string;
+  label?: string;
+  labelClassName?: string;
 }
 
 export const InputUI: React.FC<InputUIProps> = ({
@@ -21,11 +22,16 @@ export const InputUI: React.FC<InputUIProps> = ({
   labelClassName,
   ...props
 }) => {
+  const id = useId();
   return (
     <div className="input-wrapper">
-      {label && <label className={cls('input-label', labelClassName)}>{label}</label>}
-      <input className={cls('input', className)} {...props} />
+      {label && (
+        <label className={cls("input-label", labelClassName)} htmlFor={id}>
+          {label}
+        </label>
+      )}
+      <input className={cls("input", className)} {...props} id={id} />
       {children}
     </div>
-  )
-}
+  );
+};

@@ -33,8 +33,8 @@ const FeedbackForm: React.FC<{
     <LiquidGlassBlurUI className={cls("feedback-form", className)}>
       <div className="feedback-form__inner">
         <h3 className="feedback-form__title">
-          Получайте сообщения о каждом обновлении,которое мы публикуем. Давайте
-          будем на связи!
+          Получайте сообщения о каждом обновлении, которое мы публикуем. <br />{" "}
+          Давайте будем на связи!
         </h3>
 
         <form className="feedback-form__form" onSubmit={handleSubmit}>

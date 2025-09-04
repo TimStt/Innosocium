@@ -47,4 +47,37 @@ export const expertsData: ExpertItem[] = [
     role: "expert",
     image: "/images/juri4.jpg",
   },
+
+  {
+    id: 5,
+    name: "Афанасий Саввин",
+    position:
+      "Генеральный директор, АО «Корпорация развития Республики Саха (Якутия)»",
+    role: "expert",
+    image: "/images/juri2.jpg",
+  },
+  {
+    id: 6,
+    name: "Афанасий Саввин",
+    position:
+      "Генеральный директор, АО «Корпорация развития Республики Саха (Якутия)»",
+    role: "expert",
+    image: "/images/juri3.jpg",
+  },
+  {
+    id: 7,
+    name: "Афанасий Саввин",
+    position:
+      "Генеральный директор, АО «Корпорация развития Республики Саха (Якутия)»",
+    role: "expert",
+    image: "/images/juri4.jpg",
+  },
+  {
+    id: 8,
+    name: "Афанасий Саввин",
+    position:
+      "Генеральный директор, АО «Корпорация развития Республики Саха (Якутия)»",
+    role: "expert",
+    image: "/images/juri3.jpg",
+  },
 ];

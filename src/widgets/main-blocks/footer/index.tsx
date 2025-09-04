@@ -24,27 +24,32 @@ const Footer: React.FC<{ feedbackForm?: React.ReactNode }> = ({
         <div className="footer__content">
           {/* Контактная информация */}
 
-             <InnosociumLogo className="zero-hero__main__logo name-contest mobile" />
+          <InnosociumLogo className="footer__logo name-contest mobile" />
           <div className="footer__contact-info">
-          
-              <a href="tel:+74956404440" className="footer__contact-link">
-                +7(495)640-44-40
-              </a>
-              <a href="mailto:innsocium@mail.ru" className="footer__contact-link">
-                innsocium@mail.ru
-              </a>
-        
+            <a href="tel:+74956404440" className="footer__contact-link">
+              +7(495)640-44-40
+            </a>
+            <a href="mailto:innsocium@mail.ru" className="footer__contact-link">
+              innsocium@mail.ru
+            </a>
 
             <address className="footer__contact-address">
               Москва, Краснопресненская набережная, д. 12
             </address>
           </div>
-          <InnosociumLogo className="zero-hero__main__logo name-contest" />
+          <InnosociumLogo className="footer__logo name-contest" />
           {/* Нижняя часть футера */}
           <div className="footer__bottom">
             <p className="footer__copyright-text">
               © 2025 все права защищены.
             </p>
+
+            <a href="/season-2025" className="footer__legal-link mobile">
+              сезон {new Date().getFullYear()}
+            </a>
+            <a href="/privacy-policy" className="footer__legal-link mobile">
+              политика конфиденциальности
+            </a>
 
             <div className="footer__social">
               <a

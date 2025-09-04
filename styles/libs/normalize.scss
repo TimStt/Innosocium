@@ -13,6 +13,45 @@ details > summary::marker {
   content: ""; /* Прощай, стрелочка, теперь ты здесь не нужна! */
 }
 
+input {
+  -webkit-appearance: none;
+  appearance: none;
+  border: none;
+  outline: none;
+  background: none;
+
+  &::-webkit-search-decoration,
+  &::-webkit-search-cancel-button,
+  &::-webkit-search-results-button,
+  &::-webkit-search-results-decoration {
+    display: none;
+  }
+}
+
+input:-webkit-autofill {
+  color: transparent !important;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input:is(
+  ::-webkit-outer-spin-button,
+  ::-webkit-inner-spin-button,
+  ::-webkit-search-decoration,
+  ::-webkit-search-cancel-button,
+  ::-webkit-search-results-button,
+  ::-webkit-search-results-decoration
+) {
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
 svg {
   transition-duration: var(--transition-normal);
 }
@@ -41,12 +80,44 @@ h6 {
   margin-bottom: 0px;
 }
 
-input:-webkit-autofill {
-  color: #ffffff !important;
-}
-
 a {
   color: inherit;
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+  box-shadow: 0 0 0px 1000px transparent inset !important;
+  -webkit-text-fill-color: var(--color-light-beige) !important;
+  border-color: var(--color-light-beige) !important;
+}
+
+input:-webkit-autofill {
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+input:-webkit-autofill {
+  animation-name: autofillWhite;
+  animation-fill-mode: both;
+  animation-duration: 500ms;
+}
+
+@keyframes autofillWhite {
+  0% {
+    box-shadow: 0 0 0px 1000px transparent inset;
+    -webkit-text-fill-color: var(--color-light-beige);
+  }
+
+  100% {
+    box-shadow: 0 0 0px 1000px transparent inset;
+    -webkit-text-fill-color: var(--color-light-beige);
+  }
+}
+
+input {
+  background-color: white;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 ol,
