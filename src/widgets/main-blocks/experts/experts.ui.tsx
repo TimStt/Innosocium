@@ -25,7 +25,7 @@ gsap.registerPlugin(Draggable);
 
 const Experts: React.FC = () => {
   // Состояние анимации и флаг однократного запуска
-  const [hasAnimated, setHasAnimated] = useState(false);
+  const hasAnimated = useRef<boolean>(false);
   const [isDragging, setIsDragging] = useState(false);
 
   // Refs для элементов анимации
@@ -51,8 +51,8 @@ const Experts: React.FC = () => {
    */
   const intersectionRef = useIntersection(
     () => {
-      if (!hasAnimated) {
-        setHasAnimated(true);
+      if (!hasAnimated.current) {
+        hasAnimated.current = true;
 
         // Создаем и запускаем основную анимацию
         const mainTimeline = createMainTimeline(
