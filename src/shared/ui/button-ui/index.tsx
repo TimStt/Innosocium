@@ -14,6 +14,7 @@ export interface ButtonUIProps
   fullWidth?: boolean;
   variant?: "primary";
   isLoading?: boolean;
+  ref?: React.RefObject<HTMLButtonElement | null>;
 }
 
 export const ButtonUI: React.FC<ButtonUIProps> = ({
@@ -22,6 +23,7 @@ export const ButtonUI: React.FC<ButtonUIProps> = ({
   variant = "primary",
   fullWidth = false,
   isLoading = false,
+  ref,
   ...props
 }) => {
   return (
@@ -30,6 +32,7 @@ export const ButtonUI: React.FC<ButtonUIProps> = ({
         "button--full-width": fullWidth,
         [variant]: variant,
       })}
+      ref={ref}
       {...props}
     >
       {children}

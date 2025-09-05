@@ -38,6 +38,14 @@
   border-radius: 5px;
   height: 100%;
 
+  &:after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.2);
+    z-index: 21;
+  }
+
   &__inner {
     z-index: 5;
 
@@ -93,6 +101,8 @@
       font-size: var(--fontSizeTablet);
     }
 
+    // Анимация блюра для чисел
+
     &.hidden {
       opacity: 0;
       visibility: hidden;
@@ -112,6 +122,7 @@
     align-items: center;
     justify-content: center;
     flex: 1;
+    height: 100%;
   }
 
   &__numbers {
@@ -124,7 +135,18 @@
     transition-duration: var(--transition-slower-3);
     transform: translateX(100%);
     z-index: -1;
+
     // transform: translateX(50%);
+
+    &.active {
+      .stage-card__number {
+        animation-play-state: running;
+        animation-delay: var(--transition-slower-3);
+        animation-duration: 0.5s;
+        animation-name: blur-numbers;
+        animation-fill-mode: forwards;
+      }
+    }
 
     span {
       display: inline-block;
@@ -166,6 +188,16 @@
   }
 }
 
+@keyframes blur-numbers {
+  0% {
+    filter: blur(0px);
+  }
+
+  100% {
+    filter: blur(4px);
+  }
+}
+
 @include adaptive-desktop {
   .stage-card__title {
     font-size: 22px;
@@ -195,9 +227,9 @@
     font-size: 26px;
   }
 
-  .stage-card {
-    aspect-ratio: 308 / 320;
-  }
+  // .stage-card {
+  //   aspect-ratio: 308 / 320;
+  // }
 }
 
 @media (max-width: 1300px) {

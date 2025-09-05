@@ -18,15 +18,16 @@ export const PartnerCard: React.FC<PartnerCardProps> = ({ partner }) => {
   const { name, logo, tagline, url } = partner;
 
   return (
-    <LiquidGlassUI className="partner-card">
-      <div className="partner-card__inner">
-        <img
-          src={logo}
-          alt={`Логотип ${name}`}
-          className="partner-card__logo"
-          loading="lazy"
-        />
-      </div>
+    <LiquidGlassUI
+      className="partner-card"
+      classNameContainer="partner-card__inner"
+    >
+      <img
+        src={logo}
+        alt={`Логотип ${name}`}
+        className="partner-card__logo"
+        loading="lazy"
+      />
     </LiquidGlassUI>
   );
 };

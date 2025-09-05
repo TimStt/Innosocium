@@ -19,7 +19,7 @@ export const useExpertsMainTimeline = () => {
       titleEl: HTMLHeadingElement | null,
       cardsListEl: HTMLDivElement | null,
       descriptionEl: HTMLDivElement | null,
-      buttonEl: HTMLDivElement | null
+      buttonEl: HTMLButtonElement | null
     ) => {
       if (!titleEl || !cardsListEl || !descriptionEl || !buttonEl) return null;
 
