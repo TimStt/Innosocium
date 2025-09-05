@@ -210,17 +210,16 @@ const Experts: React.FC = () => {
                 <ExpertCard expert={expert} />
               </div>
             ))}
-
-            <div className="experts__list">
-              {expertsData.map((expert) => (
-                <div
-                  key={`clone-${expert.id}`}
-                  className="experts__item marquee-item"
-                >
-                  <ExpertCard expert={expert} />
-                </div>
-              ))}
-            </div>
+          </div>
+          <div className="experts__list">
+            {expertsData.map((expert) => (
+              <div
+                key={`clone-${expert.id}`}
+                className="experts__item marquee-item"
+              >
+                <ExpertCard expert={expert} />
+              </div>
+            ))}
           </div>
         </div>
       </div>
