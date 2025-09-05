@@ -5,6 +5,9 @@
  * @created: 2025-08-29
  */
 
+import { Autoplay } from "swiper/modules";
+import { SwiperOptions } from "swiper/types";
+
 export type ExpertItem = {
   id: number;
   name: string;
@@ -81,3 +84,18 @@ export const expertsData: ExpertItem[] = [
     image: "/images/juri3.jpg",
   },
 ];
+
+export const swiperConfig: SwiperOptions = {
+  slidesPerView: "auto",
+  loop: true,
+  speed: 4000,
+  grabCursor: true,
+
+  modules: [Autoplay],
+  spaceBetween: 80,
+  autoplay: {
+    delay: 1,
+    reverseDirection: true,
+    disableOnInteraction: false,
+  },
+};

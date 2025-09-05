@@ -14,7 +14,7 @@ export default function Home() {
       <Nominations />
       <Grant />
       <StagesOfTheCompetition />
-      <Experts />
+      {/* <Experts /> */}
       <Partners />
     </>
   );

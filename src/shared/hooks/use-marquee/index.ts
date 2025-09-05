@@ -32,7 +32,7 @@ export const useMarquee = ({
     }
 
     // Клонируем контент, чтобы использовать для бесконечного скролла
-    const allChildren = marqueeRef.current.querySelectorAll(".marquee-item");
+    const allChildren = marqueeRef.current.querySelectorAll(".experts__list");
 
     // Переменная для хранения GSAP-твина
 
@@ -42,10 +42,7 @@ export const useMarquee = ({
       loopRef.current && loopRef.current.progress(0).kill(); // Если есть предыдущая анимация — убиваем её
 
       // Получаем ширину контента
-      const width = parseInt(
-        getComputedStyle(marqueeContent).getPropertyValue("width"),
-        10
-      );
+      const width = marqueeContent.getBoundingClientRect().width;
 
       // Получаем gap между элементами (column-gap)
       const gap = parseInt(
@@ -56,6 +53,10 @@ export const useMarquee = ({
       // Расстояние, на которое нужно переместить контент
       const distanceToTranslate = -1 * (gap + width);
 
+      console.log("width", width);
+      console.log("gap", gap);
+      console.log("distanceToTranslate", distanceToTranslate);
+
       // Создаём анимацию GSAP
       loopRef.current = gsap.fromTo(
         allChildren, // Все дети marquee (оригинал + клон)
@@ -65,7 +66,6 @@ export const useMarquee = ({
           duration,
           ease: "none",
           repeat: -1,
-          reversed: direction === "right",
         } // Конечная позиция
       );
 

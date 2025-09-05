@@ -7,7 +7,9 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import Marquee from "react-fast-marquee";
+import "swiper/css";
+import "swiper/css/autoplay";
+
 import { useIntersection } from "@/shared/hooks/use-intersection";
 import { ButtonUI } from "@/shared/ui/button-ui";
 import { WaveAnimationUI } from "@/shared/ui/wave-animation-ui";
@@ -16,10 +18,11 @@ import { Draggable } from "gsap/Draggable";
 import { useExpertsMainTimeline } from "./hooks/use-experts-main-timeline";
 
 import { ExpertCard } from "./expert-card";
-import { expertsData } from "./experts.data";
+import { expertsData, swiperConfig } from "./experts.data";
 import { cls } from "@/shared/libs/cls";
 import { useCallbackRef } from "@/shared/hooks/use-callback-ref";
 import { useMarquee } from "@/shared/hooks/use-marquee";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 gsap.registerPlugin(Draggable);
 
@@ -41,7 +44,7 @@ const Experts: React.FC = () => {
   const { createMainTimeline } = useExpertsMainTimeline();
 
   const { loopRef } = useMarquee({
-    duration: 20,
+    duration: 50,
     marqueeRef: trackRef,
   });
 
@@ -198,29 +201,17 @@ const Experts: React.FC = () => {
             </a>
           </div>
         </div>
-
-        <div className="experts__list-container" ref={trackRef}>
-          <div className="experts__list">
+        <div ref={trackRef}>
+          <Swiper className="experts__list" {...swiperConfig}>
             {expertsData.map((expert) => (
-              <div
+              <SwiperSlide
+                className="experts__item marquee-item"
                 key={`original-${expert.id}`}
-                className="experts__item marquee-item"
-                data-draggable="true"
               >
                 <ExpertCard expert={expert} />
-              </div>
+              </SwiperSlide>
             ))}
-          </div>
-          <div className="experts__list">
-            {expertsData.map((expert) => (
-              <div
-                key={`clone-${expert.id}`}
-                className="experts__item marquee-item"
-              >
-                <ExpertCard expert={expert} />
-              </div>
-            ))}
-          </div>
+          </Swiper>
         </div>
       </div>
       <div className="container">
