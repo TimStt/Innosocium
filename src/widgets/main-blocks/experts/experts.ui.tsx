@@ -43,7 +43,6 @@ const Experts: React.FC = () => {
   const { loopRef } = useMarquee({
     duration: 20,
     marqueeRef: trackRef,
-    direction: "right",
   });
 
   /**
